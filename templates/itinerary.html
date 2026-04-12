@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ meta.title }} · {{ meta.date_range }}</title>
+  <style>
+    /* ============================================================
+       BASE RESET & VARIABLES
+    ============================================================ */
+    :root {
+      --primary:   #E05C2E;
+      --accent:    #2E7D32;
+      --warn:      #E65100;
+      --danger:    #C62828;
+      --bg:        #FFF9F5;
+      --card-bg:   #FFFFFF;
+      --text:      #2D2D2D;
+      --text-light:#666;
+      --border:    #E8E0D8;
+      --nav-bg:    #FFFFFF;
+      --nav-shadow:0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family:'PingFang SC','Helvetica Neue',Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a { color:var(--primary); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    img { max-width:100%; border-radius:8px; }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .header {
+      background: linear-gradient(135deg, #E05C2E 0%, #C2491E 100%);
+      color:white;
+      padding:40px 24px 32px;
+      text-align:center;
+    }
+    .header-emoji { font-size:3em; margin-bottom:8px; }
+    .header h1 { font-size:2.2em; font-weight:700; margin-bottom:6px; }
+    .subtitle { font-size:1.1em; opacity:0.9; margin-bottom:4px; }
+    .meta { font-size:0.9em; opacity:0.75; }
+
+    .header-stats {
+      display:flex; justify-content:center; gap:24px;
+      margin-top:20px; flex-wrap:wrap;
+    }
+    .stat-item { text-align:center; }
+    .stat-num { font-size:1.6em; font-weight:700; }
+    .stat-label { font-size:0.8em; opacity:0.8; }
+
+    .nav {
+      position:sticky; top:0; z-index:100;
+      background:var(--nav-bg);
+      box-shadow:var(--nav-shadow);
+      overflow-x:auto;
+    }
+    .nav-inner {
+      display:flex; gap:0; padding:0 16px;
+      white-space:nowrap;
+    }
+    .nav a {
+      display:inline-block;
+      padding:12px 14px;
+      font-size:0.85em;
+      color:var(--text);
+      font-weight:500;
+      border-bottom:3px solid transparent;
+      transition:border 0.2s, color 0.2s;
+    }
+    .nav a:hover {
+      color:var(--primary);
+      border-bottom-color:var(--primary);
+      text-decoration:none;
+    }
+
+    .wrapper { max-width:860px; margin:0 auto; padding:24px 16px 60px; }
+
+    /* ============================================================
+       SECTIONS & CARDS
+    ============================================================ */
+    .section { margin-bottom:40px; }
+
+    .section-title {
+      font-size:1.25em; font-weight:700;
+      color:var(--primary); margin-bottom:16px;
+      display:flex; align-items:center; gap:8px;
+    }
+    .section-title .emoji { font-size:1.1em; }
+
+    .card {
+      background:var(--card-bg);
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 1px 4px rgba(0,0,0,0.06);
+      margin-bottom:16px;
+    }
+    .card-title { font-weight:700; font-size:1.05em; margin-bottom:12px; }
+
+    /* ============================================================
+       INFO GRID
+    ============================================================ */
+    .info-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+      gap:14px;
+    }
+    .info-item { display:flex; gap:10px; align-items:flex-start; }
+    .info-icon { font-size:1.1em; flex-shrink:0; }
+    .info-label { font-size:0.8em; color:var(--text-light); margin-bottom:2px; }
+    .info-value { font-size:0.9em; font-weight:500; }
+
+    /* ============================================================
+       TABLE
+    ============================================================ */
+    .table-wrap { overflow-x:auto; border-radius:10px; }
+    table {
+      width:100%; border-collapse:collapse;
+      font-size:0.9em;
+    }
+    thead tr { background:#F5EDE6; }
+    th, td {
+      padding:10px 14px; text-align:left;
+      border-bottom:1px solid var(--border);
+    }
+    th { font-weight:600; color:var(--text-light); font-size:0.85em; }
+    tbody tr:hover { background:#FFF9F5; }
+    tbody td { vertical-align:top; }
+
+    /* ============================================================
+       BADGES
+    ============================================================ */
+    .badge {
+      display:inline-block;
+      padding:2px 10px; border-radius:20px;
+      font-size:0.8em; font-weight:600;
+      background:#F0F0F0; color:#333;
+    }
+    .badge-ok    { background:#E8F5E9; color:#2E7D32; }
+    .badge-warn  { background:#FFF3E0; color:#E65100; }
+    .badge-info  { background:#E3F2FD; color:#1565C0; }
+    .badge-bad   { background:#FFEBEE; color:#C62828; }
+
+    /* ============================================================
+       DAY BLOCK
+    ============================================================ */
+    .day-block {
+      background:var(--card-bg);
+      border-radius:16px;
+      box-shadow:0 1px 4px rgba(0,0,0,0.06);
+      overflow:hidden;
+      margin-bottom:24px;
+    }
+
+    .day-header {
+      background: linear-gradient(135deg, #E05C2E 0%, #C2491E 100%);
+      color:white; padding:18px 22px;
+      display:flex; align-items:center; gap:16px;
+    }
+    .day-number {
+      font-size:2em; font-weight:800; opacity:0.25;
+      line-height:1;
+    }
+    .day-info { flex:1; }
+    .day-info h3 { font-size:1.15em; font-weight:700; margin-bottom:2px; }
+    .day-date { font-size:0.85em; opacity:0.8; }
+    .day-tags { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+
+    .day-body { padding:20px 22px; }
+
+    .day-highlight {
+      background:#FFF9F5;
+      border-left:4px solid var(--primary);
+      padding:12px 16px;
+      border-radius:0 8px 8px 0;
+      font-size:0.92em; line-height:1.7;
+      margin-bottom:16px;
+    }
+
+    .schedule-table { margin-top:14px; }
+    .schedule-table td:first-child {
+      font-weight:600; color:var(--primary);
+      white-space:nowrap; width:90px;
+    }
+
+    /* ============================================================
+       COLLAPSIBLE DETAILS
+    ============================================================ */
+    details {
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+      margin-top:14px;
+    }
+    summary {
+      padding:12px 16px; cursor:pointer; font-weight:600;
+      background:#F4F8FB; user-select:none;
+      font-size:0.9em;
+    }
+    summary:hover { background:#EAF3FA; }
+    details[open] summary { border-bottom:1px solid var(--border); }
+
+    details > div { padding:14px 16px; }
+
+    /* ============================================================
+       ZOO CARD (Bird Park alt)
+    ============================================================ */
+    .zoo-card {
+      display:grid; grid-template-columns:1fr 2fr;
+      gap:16px; padding:16px 0;
+      border-top:1px solid var(--border);
+    }
+    .zoo-card img {
+      width:100%; height:180px; object-fit:cover;
+      border-radius:10px;
+    }
+    .zoo-name { font-size:1.05em; font-weight:700; margin-bottom:4px; }
+    .zoo-rating { font-size:0.85em; color:var(--text-light); margin-bottom:8px; }
+    .zoo-rating span { color:var(--primary); font-weight:600; }
+    .zoo-card ul { padding-left:18px; font-size:0.88em; }
+    .zoo-card li { margin-bottom:4px; }
+
+    .ticket-table { width:100%; margin-top:10px; font-size:0.85em; }
+    .ticket-table th { background:#F5EDE6; }
+    .ticket-table td, .ticket-table th { padding:6px 10px; }
+
+    .review-block {
+      background:#FAFAFA; border-radius:8px;
+      padding:10px 14px; margin-top:10px;
+      font-size:0.85em;
+    }
+    .review-block .reviewer { font-size:0.8em; color:var(--text-light); margin-bottom:4px; }
+    .review-block .stars { color:var(--primary); }
+
+    /* Zoo compare toggle */
+    .zoo-compare summary {
+      background:#FFF8F0; font-size:0.95em;
+      padding:14px 16px;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 600px) {
+      .header h1 { font-size:1.7em; }
+      .header-stats { gap:16px; }
+      .nav a { padding:10px 12px; font-size:0.8em; }
+      .zoo-card { grid-template-columns:1fr; }
+      .zoo-card img { height:160px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<div class="header" id="top">
+  <div class="header-emoji">🌴</div>
+  <h1>{{ meta.title }}</h1>
+  <p class="subtitle">{{ meta.date_range }}</p>
+  <p class="meta">{{ meta.people }}人 · {{ meta.departure }}</p>
+
+  <div class="header-stats">
+    <div class="stat-item">
+      <div class="stat-num">{{ meta.days }}</div>
+      <div class="stat-label">天</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">{{ meta.nights }}</div>
+      <div class="stat-label">晚</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">{{ meta.people }}</div>
+      <div class="stat-label">人</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">🇮🇩</div>
+      <div class="stat-label">{{ meta.location }}</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== STICKY NAV ==================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#overview">总览</a>
+    <a href="#flights">✈️ 航班</a>
+    <a href="#accommodation">🏠 住宿</a>
+    {% for d in days %}
+    <a href="#day{{ d.id }}">Day {{ d.id }}</a>
+    {% endfor %}
+    <a href="#alternative">🗺️ 备选行程</a>
+    <a href="#tips">🎒 实用贴士</a>
+    <a href="#todo">✅ 待办</a>
+  </div>
+</nav>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<div class="wrapper">
+
+  <!-- ===== OVERVIEW ===== -->
+  <div class="section" id="overview">
+    <div class="section-title"><span class="emoji">🗺️</span> 行程总览</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>日期</th><th>星期</th><th>行程亮点</th><th>关键词</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>4/24</td><td>周五</td>
+            <td>出发 · 抵达巴厘岛</td>
+            <td><span class="badge badge-info">抵达日</span></td>
+          </tr>
+          <tr>
+            <td>4/25</td><td>周六</td>
+            <td>Seminyak 海滩 + 别墅休整</td>
+            <td><span class="badge badge-ok">倒时差</span></td>
+          </tr>
+          <tr>
+            <td>4/26</td><td>周日</td>
+            <td>Waterbom Bali 水上乐园</td>
+            <td><span class="badge badge-ok">亲子必去</span></td>
+          </tr>
+          <tr>
+            <td>4/27</td><td>周一</td>
+            <td>Ubud 一日游 → Bali Zoo（梯田打卡 + 瀑布经过 + 动物园）</td>
+            <td><span class="badge badge-ok">⭐ 今日重点</span></td>
+          </tr>
+          <tr>
+            <td>4/28</td><td>周二</td>
+            <td>Sanur 海滩玩水 + Seminyak 海滩俱乐部日落</td>
+            <td><span class="badge badge-ok">⭐ 今日重点</span></td>
+          </tr>
+          <tr>
+            <td>4/29</td><td>周三</td>
+            <td>南 Bali 一日游（Uluwatu 悬崖咖啡 + Nusa Dua 海滩）</td>
+            <td><span class="badge badge-ok">⭐ 今日重点</span></td>
+          </tr>
+          <tr>
+            <td>4/30</td><td>周四</td>
+            <td>Seminyak 休闲日：Villa + 按摩 + 餐饮探索</td>
+            <td><span class="badge badge-ok">慢节奏</span></td>
+          </tr>
+          <tr>
+            <td>5/1</td><td>周五</td>
+            <td>🏁 出发前夜：打包行李 + 退房 + 早点休息</td>
+            <td><span class="badge badge-warn">⚠️ 05:30出发</span></td>
+          </tr>
+          <tr>
+            <td>5/2</td><td>周六</td>
+            <td>返程 · 回家</td>
+            <td><span class="badge badge-info">返程日</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== FLIGHTS ===== -->
+  <div class="section" id="flights">
+    <div class="section-title"><span class="emoji">✈️</span> 航班信息</div>
+
+    <div class="card">
+      <div class="card-title">{{ flights.outbound.icon }} {{ flights.outbound.label }} · {{ flights.outbound.date }}</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>航班</th><th>路线</th><th>时间</th><th>备注</th></tr>
+          </thead>
+          <tbody>
+            {% for seg in flights.outbound.segments %}
+            <tr>
+              <td>{{ seg.flight }}</td>
+              <td>{{ seg.route }}</td>
+              <td>{{ seg.departure }} → {{ seg.arrival }}</td>
+              <td>{{ seg.note }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">{{ flights.return.icon }} {{ flights.return.label }} · {{ flights.return.date }}</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>航班</th><th>路线</th><th>时间</th><th>备注</th></tr>
+          </thead>
+          <tbody>
+            {% for seg in flights.return.segments %}
+            <tr>
+              <td>{{ seg.flight }}</td>
+              <td>{{ seg.route }}</td>
+              <td>{{ seg.departure }} → {{ seg.arrival }}</td>
+              <td>{{ seg.note }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:10px; font-size:0.88em; color:var(--text-light);">
+        📋 {{ flights.return.note }}<br>
+        🧳 {{ flights.return.luggage }}
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ACCOMMODATION ===== -->
+  <div class="section" id="accommodation">
+    <div class="section-title"><span class="emoji">🏠</span> 住宿</div>
+    <div class="card">
+      <div class="card-title">{{ meta.accommodation.name }}</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div class="info-text">
+            <div class="info-label">地址</div>
+            <div class="info-value">{{ meta.accommodation.address }}</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📅</div>
+          <div class="info-text">
+            <div class="info-label">入住</div>
+            <div class="info-value">{{ meta.accommodation.check_in }}</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🚪</div>
+          <div class="info-text">
+            <div class="info-label">退房</div>
+            <div class="info-value">{{ meta.accommodation.check_out }}</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🌙</div>
+          <div class="info-text">
+            <div class="info-label">住宿晚数</div>
+            <div class="info-value">{{ meta.accommodation.nights_count }}</div>
+          </div>
+        </div>
+      </div>
+
+      <details style="border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden;">
+        <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#FFF8F0;user-select:none;font-size:0.9em;">
+          🗺️ 房东提供的路线指引（点击展开）
+        </summary>
+        <div style="padding:14px 16px;font-size:0.88em;line-height:1.9;">
+          <div style="background:#FFF9F0;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+            <p style="margin-bottom:8px;"><strong>📍 怎么找：</strong></p>
+            <p style="margin-bottom:8px;">从 <strong>Jl. Petitenget</strong> 进巷子，靠近 <strong>Minimart / Baby Revs</strong>。</p>
+            <p style="margin-bottom:8px;">巷子口写着 <strong>"Gang Telaga Waja"</strong>，往里走约 <strong>150米</strong>，左手边即是 <strong>5A</strong>。</p>
+          </div>
+          <div style="background:#F4F8FB;border-radius:8px;padding:12px 16px;">
+            <p style="margin-bottom:6px;"><strong>🚗 接机司机指引：</strong></p>
+            <p>导航搜索 <strong>"Gang Telaga Waja"</strong>，进了巷子直走150米左手边。</p>
+            <p style="margin-top:6px;color:#666;font-size:0.88em;">巷子到底就是 Villa，大件行李下车方便。</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===== DAILY DETAIL BLOCKS ===== -->
+  <div class="section" id="daily">
+    <div class="section-title"><span class="emoji">📅</span> 每日详情</div>
+
+    {% for day in days %}
+    <div class="day-block" id="day{{ day.id }}">
+      <div class="day-header">
+        <div class="day-number">{{ day.id }}</div>
+        <div class="day-info">
+          <h3>{{ day.label }} · {{ day.date }}（{{ day.weekday }}）</h3>
+          <div class="day-date">{{ day.subtitle }}</div>
+        </div>
+        <div class="day-tags">
+          {% for badge in day.badges %}
+          <span class="badge" style="background:{{ badge.style }};color:white;">{{ badge.text }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="day-body">
+
+        {% if day.summary %}
+        <div class="day-highlight">
+          <strong>📋 今日概要：</strong>{{ day.summary }}
+        </div>
+        {% endif %}
+
+        {% if day.schedule %}
+        <div class="table-wrap schedule-table">
+          <table>
+            <thead>
+              <tr><th>时间</th><th>安排</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+              {% for item in day.schedule %}
+              <tr>
+                <td>{{ item.time }}</td>
+                <td>{{ item.activity }}</td>
+                <td>{{ item.note if item.note else '' }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% endif %}
+
+        <!-- Day 1: 商场列表 -->
+        {% if day.malls %}
+        <div style="margin-top:20px;">
+          <div class="card-title" style="margin-bottom:14px;">🛍️ 附近商场一览（点击展开查看详情）</div>
+          {% for mall in day.malls %}
+          <details style="margin-bottom:12px; border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#F4F8FB; user-select:none;">
+              🏬 {{ mall.name }} &nbsp;<span style="font-weight:400; color:var(--text-light); font-size:0.88em;">{{ mall.location }} · {{ mall.rating }}</span>
+            </summary>
+            <div style="padding:14px 16px;">
+              <img src="{{ mall.image }}" alt="{{ mall.name }}" style="width:100%; border-radius:8px; margin-bottom:12px; object-fit:cover; max-height:200px;" onerror="this.style.display='none'">
+              <div style="font-size:0.9em; line-height:1.8;">
+                <p><strong>位置：</strong>{{ mall.location }}</p>
+                <p><strong>距离：</strong>{{ mall.distance }}</p>
+                <p><strong>评分：</strong>{{ mall.rating }}</p>
+                <p><strong>营业：</strong>{{ mall.hours }}</p>
+                <p><strong>亮点：</strong>{{ mall.highlights }}</p>
+                <p><strong>适合：</strong>{{ mall.suitable }}</p>
+                <p><strong>地址：</strong>{{ mall.address }}</p>
+              </div>
+            </div>
+          </details>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Day 2: Waterbom -->
+        {% if day.waterbom %}
+        <div class="info-grid" style="margin-top:18px;">
+          <div class="info-item">
+            <div class="info-icon">⭐</div>
+            <div class="info-text">
+              <div class="info-label">评分</div>
+              <div class="info-value">{{ day.waterbom.rating }}</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">⏱️</div>
+            <div class="info-text">
+              <div class="info-label">建议时长</div>
+              <div class="info-value">{{ day.waterbom.duration }}</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-text">
+              <div class="info-label">位置</div>
+              <div class="info-value">{{ day.waterbom.address }}</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">💰</div>
+            <div class="info-text">
+              <div class="info-label">参考票价</div>
+              <div class="info-value">{{ day.waterbom.ticket_price }}</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🕘</div>
+            <div class="info-text">
+              <div class="info-label">营业时间</div>
+              <div class="info-value">{{ day.waterbom.hours }}</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🌡️</div>
+            <div class="info-text">
+              <div class="info-label">建议到园时间</div>
+              <div class="info-value">{{ day.waterbom.best_arrival }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 票价对比 -->
+        <div style="margin-top:18px;">
+          <div class="card-title" style="margin-bottom:12px;">🎟️ 票价对比 &amp; 购票（点击展开）</div>
+          <details style="border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#F4F8FB; user-select:none;">
+              🎟️ 票价一览 · 官方四人套票最划算
+            </summary>
+            <div style="padding:14px 16px; font-size:0.9em;">
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>购票渠道</th><th>单人价格</th><th>4人总价</th><th>备注</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>官方四人套票</strong> ⭐推荐</td>
+                      <td>约¥300/人</td>
+                      <td>约¥1,200/4人</td>
+                      <td>含家庭储物柜+4毛巾+4冰淇淋+SPA八折</td>
+                    </tr>
+                    <tr>
+                      <td>官方单人票</td>
+                      <td>IDR 495,000</td>
+                      <td>约¥2,000/4人</td>
+                      <td>无附加，需另租毛巾储物柜</td>
+                    </tr>
+                    <tr>
+                      <td>Klook 客路</td>
+                      <td>约¥240-330</td>
+                      <td>约¥960-1,320</td>
+                      <td>价格浮动，以实际日期为准</td>
+                    </tr>
+                    <tr>
+                      <td>KKday</td>
+                      <td>约¥140起</td>
+                      <td>约¥560起</td>
+                      <td>票价范围较大，需选具体日期</td>
+                    </tr>
+                    <tr>
+                      <td>携程/飞猪</td>
+                      <td>约¥300-350</td>
+                      <td>约¥1,200-1,400</td>
+                      <td>淡旺季浮动</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style="margin-top:14px; padding:12px 16px; background:#D1ECF1; border-radius:8px; color:#0C5460;">
+                <strong>⭐ 建议购买：{{ day.waterbom.recommended_ticket }}（Four Pack Pass）</strong><br>
+                价格：<strong>IDR {{ day.waterbom.recommended_price_idr }}</strong>（{{ day.waterbom.recommended_price_cny }}）<br>
+                包含：<strong>{{ day.waterbom.recommended_includes }}</strong><br>
+                购买途径：<a href="{{ day.waterbom.ticket_link }}" target="_blank" style="color:var(--primary);">waterbom-bali.com/ticket</a>（官网直购，支持VISA/Mastercard）<br>
+                <span style="font-size:0.88em;">提示：4月26日是周日，属于常规旺季，官方四人套票比分开买单人票划算很多</span>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- 分工方案 -->
+        {% if day.roles %}
+        <div style="margin-top:18px;">
+          <div class="card-title" style="margin-bottom:12px;">👨‍👩‍👧‍👦 大人分工方案（点击展开）</div>
+          <details style="border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#FFF3E0; user-select:none;">
+              👨‍👩‍👧‍👦 大人分工方案（点击查看）
+            </summary>
+            <div style="padding:14px 16px; font-size:0.9em; line-height:1.8;">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:14px;">
+                {% for role in day.roles %}
+                <div style="background:{{ role.bg }}; border-radius:10px; padding:14px;">
+                  <div style="font-weight:700; color:{{ role.color }}; margin-bottom:8px;">{{ role.person }}</div>
+                  <ul style="margin:0; padding-left:18px; font-size:0.9em;">
+                    {% for task in role.tasks %}
+                    <li>{{ task }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                {% endfor %}
+              </div>
+              <div style="background:#FFF9C4; border-radius:8px; padding:12px 14px; font-size:0.88em;">
+                <strong>💡 灵活建议：</strong>水上乐园允许换人接管陪同。如果爸爸想玩大型项目，可以临时和妈妈换手，让妈妈看护一会儿。热门项目建议一入园就先去排队，趁早上人少把想玩的都刷完。
+              </div>
+              <div style="margin-top:10px; font-size:0.88em; color:#555;">
+                <strong>📍 集合点：</strong>每次分流活动前约定固定汇合点（如入口大招牌或某个餐厅门口），万一走散可以在10分钟内碰头。
+              </div>
+            </div>
+          </details>
+        </div>
+        {% endif %}
+
+        <!-- 身高与项目 -->
+        {% if day.height_rules %}
+        <div style="margin-top:18px;">
+          <div class="card-title" style="margin-bottom:12px;">🎢 身高与可玩项目（点击展开）</div>
+          {% for hr in day.height_rules %}
+          <details style="margin-top:10px; border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#F4F8FB; user-select:none;">
+              {{ hr.name }}
+            </summary>
+            <div style="padding:14px 16px; font-size:0.9em; line-height:2;">
+              {% if hr.can_play %}
+              <p style="margin-bottom:8px;"><strong style="color:var(--accent);">✅ 都能玩：</strong></p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+                {% for p in hr.can_play %}
+                <span class="badge badge-ok">{{ p }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+              {% if hr.cannot_play %}
+              <p><strong style="color:var(--danger);">❌ 玩不了：</strong></p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                {% for p in hr.cannot_play %}
+                <span class="badge badge-bad">{{ p }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+          </details>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% endif %}
+
+        <!-- Day 3: 包车信息 -->
+        {% if day.car_rental %}
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden;">
+          <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#EFF6FF;user-select:none;">
+            🚗 包车信息（点击查看）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+            <div style="margin-bottom:12px;">
+              <strong>📱 推荐平台：</strong>
+              <a href="{{ day.car_rental.link }}" target="_blank" style="color:var(--primary);font-weight:600;">{{ day.car_rental.platform }} 巴厘岛包车</a>
+              &nbsp;（{{ day.car_rental.rating }}）
+            </div>
+            <div style="background:#F0F9FF;border-radius:8px;padding:12px 16px;margin-bottom:14px;">
+              <div style="margin-bottom:6px;"><strong>💰 {{ day.car_rental.recommended }}</strong></div>
+              <div style="font-size:0.88em;color:#555;">{{ day.car_rental.price }} · {{ day.car_rental.car_type }}</div>
+            </div>
+            <div style="margin-bottom:10px;"><strong>✅ 费用包含</strong><br>{{ day.car_rental.includes }}</div>
+            {% if day.car_rental.extra_cash %}
+            <div style="margin-bottom:10px;">
+              <strong>❌ 需现场付司机现金</strong>
+              <ul style="margin:6px 0 0 0;padding-left:20px;">
+                {% for item in day.car_rental.extra_cash %}
+                <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+            {% if day.car_rental.insurance %}
+            <div style="margin-bottom:10px;"><strong>🛡️ 保险</strong><br>{{ day.car_rental.insurance }}</div>
+            {% endif %}
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Day 3: Ubud景点对比 -->
+        {% if day.ubud_attractions %}
+        <div style="margin-top:20px;">
+          <div class="card-title" style="margin-bottom:12px;">🗺️ Ubud 各景点对比（当前方案参考）</div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>景点</th><th>评分</th><th>门票</th><th>3岁幼儿</th><th>7岁幼儿</th><th>说明</th></tr>
+              </thead>
+              <tbody>
+                {% for a in day.ubud_attractions %}
+                <tr>
+                  <td><strong>{{ a.name }}</strong></td>
+                  <td>{{ a.rating }}</td>
+                  <td>{{ a.ticket }}</td>
+                  <td><span class="badge {% if '❌' in a.kid_3yo %}badge-bad{% elif '✅' in a.kid_3yo %}badge-ok{% else %}badge-warn{% endif %}">{{ a.kid_3yo }}</span></td>
+                  <td><span class="badge {% if '❌' in a.kid_7yo %}badge-bad{% else %}badge-ok{% endif %}">{{ a.kid_7yo }}</span></td>
+                  <td>{{ a.note }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Day 4: 交通 -->
+        {% if day.transport %}
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:14px;overflow:hidden;">
+          <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#EFF6FF;user-select:none;">
+            🚗 Seminyak → Sanur 交通（点击查看）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+            <div style="margin-bottom:10px;">
+              <strong>推荐方式：{{ day.transport.method }}</strong>
+              <ul style="margin:6px 0 0 0;padding-left:20px;">
+                <li>车程：{{ day.transport.duration }}</li>
+                <li>费用：{{ day.transport.cost }}</li>
+                <li>叫车：从 Seminyak 任意地点叫车，直接输入 "Sanur Beach" 导航即可</li>
+                <li>回程：同方式返回，或让包车司机等候一天（可和 Day 3 司机协商）</li>
+              </ul>
+            </div>
+            <div style="background:#FFF9F0;border-radius:8px;padding:10px 14px;font-size:0.88em;">
+              💡 <strong>小提示：</strong>{{ day.transport.tip }}
+            </div>
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Day 4: Sanur海滩 -->
+        {% if day.sanur_beach %}
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden;">
+          <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#F0FFF4;user-select:none;">
+            🏖️ Sanur 海滩玩水攻略（点击查看）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+            <div style="margin-bottom:10px;">
+              <strong>推荐海滩：{{ day.sanur_beach.name }}</strong><br>{{ day.sanur_beach.description }}
+            </div>
+            {% if day.sanur_beach.facilities %}
+            <div style="margin-bottom:10px;">
+              <strong>公共设施</strong>
+              <ul style="margin:6px 0 0 0;padding-left:20px;">
+                {% for f in day.sanur_beach.facilities %}
+                <li>{{ f }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+            {% if day.sanur_beach.bring %}
+            <div style="margin-bottom:10px;">
+              <strong>建议自带</strong><br>{{ day.sanur_beach.bring }}
+            </div>
+            {% endif %}
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Day 4: 海滩俱乐部 -->
+        {% if day.beachclub %}
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden;">
+          <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#FFF3E0;user-select:none;">
+            🏖️ 海滩俱乐部攻略 {{ day.beachclub.name }}（点击查看）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+            <div style="margin-bottom:10px;">
+              <ul style="margin:6px 0 0 0;padding-left:20px;">
+                <li><strong>入场：</strong>{{ day.beachclub.entry }}</li>
+                <li><strong>低消：</strong>{{ day.beachclub.min_spend }}</li>
+                <li><strong>特色：</strong>{{ day.beachclub.feature }}</li>
+                <li><strong>儿童：</strong>{{ day.beachclub.kids }}</li>
+                <li><strong>时间：</strong>{{ day.beachclub.best_time }}</li>
+                <li><strong>地址：</strong>{{ day.beachclub.address }}</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Day 5: 悬崖咖啡 -->
+        {% if day.cafe %}
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden;">
+          <summary>☕ {{ day.cafe.name }} 悬崖咖啡厅介绍</summary>
+          <div style="padding:10px 14px;">
+            <ul style="padding-left:18px; font-size:0.9em;">
+              <li>📍 <strong>位置：</strong>{{ day.cafe.location }}</li>
+              <li>🚗 <strong>停车：</strong>{{ day.cafe.parking }}</li>
+              <li>♿ <strong>台阶：</strong>{{ day.cafe.steps }}</li>
+              <li>🌊 <strong>景观：</strong>{{ day.cafe.view }}</li>
+              <li>🍽️ <strong>消费：</strong>{{ day.cafe.spend }}</li>
+              <li>👶 <strong>带娃：</strong>{{ day.cafe.kids }}</li>
+            </ul>
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Day 5: 海滩 -->
+        {% if day.beach %}
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:10px;overflow:hidden;">
+          <summary>🏖️ {{ day.beach.name }} 海滩指南</summary>
+          <div style="padding:10px 14px;">
+            <ul style="padding-left:18px; font-size:0.9em;">
+              <li>📍 <strong>位置：</strong>{{ day.beach.location }}</li>
+              <li>🏖️ <strong>特点：</strong>{{ day.beach.features }}</li>
+              <li>💺 <strong>躺椅：</strong>{{ day.beach.loungers }}</li>
+              <li>🚿 <strong>淋浴：</strong>{{ day.beach.shower }}</li>
+              <li>🍽️ <strong>海滩 café：</strong>{{ day.beach.cafe }}</li>
+            </ul>
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Day 5: 为什么放弃 -->
+        {% if day.why_not %}
+        <div style="margin-top:16px; padding:12px 16px; background:#E8F5E9; border-radius:10px; border-left:4px solid #4CAF50;">
+          <strong style="color:#2E7D32;">✅ 为什么放弃 Melasti + Uluwatu 寺庙 + Kecak？</strong>
+          <ul style="margin-top:8px; padding-left:18px; font-size:0.88em;">
+            {% for r in day.why_not %}
+            <li style="margin-bottom:4px;">{{ r.reason }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <!-- Day 6: SPA 列表（外嵌 spa-list.yaml 数据） -->
+        {% if day.id == 6 %}
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:18px;overflow:hidden;">
+          <summary style="padding:14px 16px;cursor:pointer;font-weight:600;background:#F0F4FF;user-select:none;font-size:0.95em;">
+            💆 Seminyak Villa 周边 SPA 清单（点击展开）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.88em;line-height:1.9;">
+            {% for group in spa_list.spa_groups %}
+            <div style="margin-bottom:20px;">
+              <div style="font-size:1.05em;font-weight:700;color:var(--primary);margin-bottom:4px;">{{ group.category }}</div>
+              {% for spa in group.spas %}
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:{{ group.bg }};border-radius:8px;border-left:3px solid {{ group.color }};">
+                <div style="font-weight:600;">{{ spa.name }}</div>
+                <div style="color:#666;">{{ spa.rating }}{% if spa.address %} · 📍 {{ spa.address }}{% endif %} · ⏰ {{ spa.hours }}</div>
+                {% if spa.website %}
+                <div style="color:#555;margin-top:4px;">{{ spa.type }}{% if spa.website %} · <a href="https://{{ spa.website }}" target="_blank" style="color:var(--primary);">{{ spa.website }}</a>{% endif %}</div>
+                {% elif spa.phone %}
+                <div style="color:#555;margin-top:4px;">☎️ {{ spa.phone }} · <a href="https://{{ spa.website }}" target="_blank" style="color:var(--primary);">{{ spa.website }}</a></div>
+                {% endif %}
+                {% if spa.note %}
+                <div style="color:#888;margin-top:4px;">{{ spa.note }}</div>
+                {% endif %}
+              </div>
+              {% endfor %}
+            </div>
+            {% endfor %}
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Day 6: 早午餐餐厅 -->
+        {% if day.restaurants %}
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:18px;overflow:hidden;">
+          <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#FFF8F0;user-select:none;font-size:0.9em;">
+            🍽️ 早午餐餐厅参考（点击展开）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.88em;line-height:1.9;">
+            {% for r in day.restaurants %}
+            <div style="margin-bottom:12px;padding:10px 14px;background:#FFF9F0;border-radius:8px;border-left:3px solid #FF9800;">
+              <div style="font-weight:600;">{{ r.name }}</div>
+              <div style="color:#666;">{{ r.address }}{% if r.link %} · <a href="{{ r.link }}" target="_blank" style="color:var(--primary);">{{ r.link }}</a>{% endif %}</div>
+              <div style="color:#555;margin-top:2px;">{{ r.description }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Day 6: SPA推荐组合 -->
+        {% if day.spa_note %}
+        <div style="margin-top:14px; padding:12px 16px; background:#E8F5E9; border-radius:10px; border-left:4px solid #4CAF50; font-size:0.88em;">
+          <strong style="color:#2E7D32;">💡 推荐组合：</strong>{{ day.spa_note }}
+        </div>
+        {% endif %}
+
+        <!-- Day 3: Bird Park alternative -->
+        {% if day.id == 3 %}
+        <details class="zoo-compare">
+          <summary>🦜 备选方案：Bali Bird Park（点击查看）</summary>
+          <div class="compare-body">
+            <div class="zoo-card">
+              <img src="https://res.klook.com/image/upload/w_750,h_469,c_fill,q_85/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/pkthu3dtoecpnm7dabz5.webp" alt="Bali Bird Park">
+              <div>
+                <div class="zoo-name">🦜 Bali Bird Park</div>
+                <div class="zoo-rating">Tripadvisor <span>4.5</span> · Klook <span>4.7/5</span> · 20K+人参加过</div>
+                <ul>
+                  <li>地点：Gianyar区，紧邻Bali Zoo，开车约5分钟</li>
+                  <li>开放时间：09:00 - 17:30（比 Zoo 晚关门30分钟）</li>
+                  <li>游览时间：2-3小时</li>
+                  <li>幼儿友好：✅ 推车/轮椅全友好，全年龄</li>
+                  <li>亮点：1,300+只鸟，250+物种；自由飞行鸟表演、喂鹦鹉（鹦鹉会落到手臂上！）、4D电影、科莫多龙互动</li>
+                  <li>园内大型餐厅，天热可进4D影厅乘凉休息</li>
+                  <li>可加购鸟明星午餐套票（含与鸟共餐）</li>
+                </ul>
+                <table class="ticket-table">
+                  <thead><tr><th>票种</th><th>平台</th><th>价格</th></tr></thead>
+                  <tbody>
+                    <tr><td>普通门票</td><td>Klook</td><td>约¥112/人</td></tr>
+                    <tr><td>鸟明星午餐套票</td><td>Klook</td><td>约¥127/人</td></tr>
+                    <tr><td>普通门票</td><td>Tripadvisor</td><td>约$18/人</td></tr>
+                  </tbody>
+                </table>
+                <div class="review-block">
+                  <div class="reviewer">🇰🇷 Klook用户 · 2025年1月</div>
+                  <div>太棒了~ 和我在韩国去过的鸟园都没得比！表演真的很好，还会到处拍照，还可以买，没有压力。中间有很多喂食体验，不会无聊。电影院每次放映15分钟的4D，天热的时候就进去乘凉，再回去继续玩。</div>
+                </div>
+                <div class="review-block">
+                  <div class="reviewer">🇦🇺 Facebook · Bali Pages群组</div>
+                  <div>强烈推荐！门票非常实惠，鸟类种类繁多。我喜欢它们自由探索公园并与你互动。全天的鸟类表演也非常精彩。维护得很好，工作人员很友好，餐厅也不错。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+        {% endif %}
+
+        <!-- Day 3/4/5 tips -->
+        {% if day.tips %}
+          {% for tip in day.tips %}
+          <div style="margin-top:14px; padding:10px 14px; background:#FFF9F0; border-radius:8px; font-size:0.88em;">
+            {{ tip.icon }} <strong>{{ tip.text }}</strong>
+          </div>
+          {% endfor %}
+        {% endif %}
+
+        <!-- Day 7/8: notes -->
+        {% if day.notes %}
+          {% for note in day.notes %}
+          <div style="margin-top:14px; padding:10px 14px; background:#FFF3E0; border-radius:8px; font-size:0.88em;">
+            {{ note.icon }} <strong>{{ note.text }}</strong>
+          </div>
+          {% endfor %}
+        {% endif %}
+
+      </div><!-- /day-body -->
+    </div><!-- /day-block -->
+    {% endfor %}
+
+  </div><!-- /daily section -->
+
+  <!-- ===== ALTERNATIVE ITINERARY ===== -->
+  <div class="section" id="alternative">
+    <div class="section-title"><span class="emoji">🗺️</span> 备选行程参考</div>
+    <div class="card">
+      <div class="card-title">🌄 东北部一日游：天空之门 + Tirta Gangga 水宫</div>
+      <div class="day-highlight" style="margin-bottom:16px;">
+        <strong>路线：</strong>Seminyak → 天空之门（约2小时车程）→ Tirta Gangga（约30分钟）→ 午餐 → 回程（约2小时）<br>
+        <strong>特点：</strong>经典打卡线，拍照好看，Tirta Gangga 孩子可以下水玩鱼
+      </div>
+
+      <details style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
+        <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#F4F8FB;user-select:none;">
+          🚪 天空之门（Lempuyang Temple）
+        </summary>
+        <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+          <div style="margin-bottom:10px;">
+            <span class="badge badge-ok" style="margin-right:6px;">📸 拍照打卡</span>
+            <span class="badge badge-warn" style="margin-right:6px;">🐒 猴子多</span>
+            <span class="badge badge-info" style="margin-right:6px;">⏱️ 1-1.5小时</span>
+          </div>
+          <p><strong>位置：</strong>巴厘岛东部，Lempuyang 山上</p>
+          <p><strong>距离：</strong>Seminyak 开车约1.5-2小时</p>
+          <p><strong>门票：</strong>约 IDR 50,000/人</p>
+          <p><strong>亮点：</strong>善恶门框架着阿贡火山，照片感极强，是巴厘岛最经典的打卡点</p>
+          <div style="margin-top:10px;padding:10px 14px;background:#FFF3CD;border-radius:8px;font-size:0.88em;color:#856404;">
+            ⚠️ <strong>注意：</strong>2023年著名拍照装置已拆除重建，重建后镜头感可能不如以前；猴子会抢眼镜和手机，建议把眼镜挂在脖子上、拿好手机；台阶不多但抱着3岁娃还是有负担
+          </div>
+        </div>
+      </details>
+
+      <details style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
+        <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#F4F8FB;user-select:none;">
+          🐟 Tirta Gangga 皇家水宫
+        </summary>
+        <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+          <div style="margin-bottom:10px;">
+            <span class="badge badge-ok" style="margin-right:6px;">👶 亲子友好</span>
+            <span class="badge badge-ok" style="margin-right:6px;">🏛️ 皇室遗迹</span>
+            <span class="badge badge-info" style="margin-right:6px;">⏱️ 1-2小时</span>
+          </div>
+          <p><strong>位置：</strong>巴厘岛东部，阿贡火山山麓</p>
+          <p><strong>距离：</strong>天空之门开车约30分钟</p>
+          <p><strong>门票：</strong>约 IDR 30,000-50,000/人</p>
+          <p><strong>亮点：</strong>11层莲花喷泉、锦鲤池、热带花园；设有浅水区，<strong>孩子可以直接下水摸鱼玩水</strong></p>
+          <p><strong>幼儿友好度：</strong>✅ 3岁果子可以下水玩鱼；✅ 7岁点心可以爬上爬下探索</p>
+          <div style="margin-top:10px;padding:10px 14px;background:#E8F5E9;border-radius:8px;font-size:0.88em;color:#2E7D32;">
+            💡 <strong>为什么推荐这里：</strong>整个水宫步行15-30分钟就能逛完，孩子能下水互动（带替换衣服！），大人觉得好看，是少有的「孩子玩得开心 + 大人觉得值得去」的组合
+          </div>
+        </div>
+      </details>
+
+      <details style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+        <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#EFF6FF;user-select:none;">
+          📋 推荐行程安排（点击查看）
+        </summary>
+        <div style="padding:14px 16px;font-size:0.9em;line-height:1.9;">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>时间</th><th>安排</th><th>备注</th></tr></thead>
+              <tbody>
+                <tr><td>06:30</td><td>出发前往天空之门</td><td>车程约1.5-2小时，建议早出发避开人流</td></tr>
+                <tr><td>08:30</td><td>抵达天空之门</td><td>拍照打卡，1-1.5小时</td></tr>
+                <tr><td>10:00</td><td>前往 Tirta Gangga</td><td>车程约30分钟</td></tr>
+                <tr><td>10:30</td><td>抵达 Tirta Gangga</td><td>带孩子下水玩鱼，1.5-2小时</td></tr>
+                <tr><td>12:30</td><td>附近餐厅午餐</td><td>推荐水宫门口的本地餐厅</td></tr>
+                <tr><td>14:00</td><td>返程</td><td>车程约2小时</td></tr>
+                <tr><td>16:00</td><td>回到 Villa</td><td>傍晚休息，不耽误日语课</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="margin-top:12px;padding:10px 14px;background:#FFF9F0;border-radius:8px;font-size:0.88em;">
+            💡 <strong>黄金周提醒：</strong>4月30日-5月3日是印尼圣爆周（Easter Week），各景点游客较多，路上较堵。建议<strong>早上6:30前出发</strong>，能有效避开高峰
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===== TIPS ===== -->
+  <div class="section" id="tips">
+    <div class="section-title"><span class="emoji">🎒</span> 实用贴士</div>
+
+    <div class="card">
+      <div class="card-title">💱 货币 &amp; 汇率</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">💰</div>
+          <div class="info-text">
+            <div class="info-label">印尼盾（IDR）</div>
+            <div class="info-value">1 RMB ≈ {{ meta.exchange_rate.cny_to_idr }} IDR</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">💵</div>
+          <div class="info-text">
+            <div class="info-label">美元参考</div>
+            <div class="info-value">1 USD ≈ {{ meta.exchange_rate.usd_to_idr }} IDR</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">💳</div>
+          <div class="info-text">
+            <div class="info-label">支付方式</div>
+            <div class="info-value">现金 + Visa/Mastercard（多数地方可刷）</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🏧</div>
+          <div class="info-text">
+            <div class="info-label">ATM</div>
+            <div class="info-value">Seminyak 遍地都有，BCA 银行靠谱</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔌 插头 &amp; 电压</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">🔌</div>
+          <div class="info-text">
+            <div class="info-label">插座类型</div>
+            <div class="info-value">Type C / Type F（欧式两脚圆插）</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">⚡</div>
+          <div class="info-text">
+            <div class="info-label">电压</div>
+            <div class="info-value">230V / 50Hz（与国内接近）</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:10px; padding:8px 14px; background:#D1ECF1; border-radius:8px; font-size:0.88em; color:#0C5460;">
+        🛫 建议：带一个<strong>万能转换插头</strong>，多个 USB 接口那种最佳。
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">👶 带娃安全注意事项</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>事项</th><th>说明</th><th>建议</th></tr></thead>
+          <tbody>
+            <tr><td>🚫 猴子森林</td><td>不去。猴子有攻击性，3岁无法遵守安全规则</td><td><span class="badge badge-bad">已排除</span></td></tr>
+            <tr><td>✅ 折叠推车</td><td>Ubud 行程（梯田、瀑布）一定用得上</td><td><span class="badge badge-ok">✅ 要带</span></td></tr>
+            <tr><td>⚠️ 安全座椅</td><td>包车时确认是否有儿童座椅</td><td><span class="badge badge-info">待确认</span></td></tr>
+            <tr><td>✅ 旅游保险</td><td>有幼儿出行必备，覆盖医疗+意外</td><td><span class="badge badge-info">待购买</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📱 推荐 APP &amp; 工具</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">🗺️</div>
+          <div class="info-text">
+            <div class="info-label">Google Maps</div>
+            <div class="info-value">离线地图提前下载好 Bali 区域</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">💬</div>
+          <div class="info-text">
+            <div class="info-label">WhatsApp</div>
+            <div class="info-value">包车司机/酒店联系工具</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🎫</div>
+          <div class="info-text">
+            <div class="info-label">Klook / GetYourGuide</div>
+            <div class="info-value">提前买门票有折扣</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🏥</div>
+          <div class="info-text">
+            <div class="info-label">旅游保险</div>
+            <div class="info-value">出国必备（有娃强烈建议购买）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TODO ===== -->
+  <div class="section" id="todo">
+    <div class="section-title"><span class="emoji">✅</span> 待确认事项</div>
+    <div class="card">
+      <div class="todo-item">
+        <div class="todo-box"></div>
+        <span><strong>包车司机确认</strong>（Day 3 Ubud 一日游，是否含儿童安全座椅？）</span>
+      </div>
+      <div class="todo-item">
+        <div class="todo-box"></div>
+        <span><strong>旅游保险</strong>（出国必备，有娃强烈建议购买）</span>
+      </div>
+      <div class="todo-item">
+        <div class="todo-box"></div>
+        <span><strong>每日餐厅</strong>（提前做功课，列入计划）</span>
+      </div>
+      <div class="todo-item">
+        <div class="todo-box"></div>
+        <span><strong>打包清单</strong>（婴儿用品、药品、防晒、转换插头等）</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /wrapper -->
+
+<div class="footer">
+  <p>🇮🇩 巴厘岛行程 · 整理于 2026年4月12日</p>
+  <p style="margin-top:4px;">有问题随时问我 😄</p>
+</div>
+
+<script>
+  // Sticky nav active state
+  const sections = document.querySelectorAll('.day-block, .section');
+  const navLinks = document.querySelectorAll('.nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

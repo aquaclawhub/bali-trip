@@ -1,0 +1,33 @@
+# 航班数据
+
+outbound:
+  date: "4月24日"
+  label: "去程"
+  icon: "🛫"
+  segments:
+    - flight: "CZ3106"
+      route: "北京大兴 → 广州白云 T2"
+      departure: "13:30"
+      arrival: "16:40"
+      note: "rowspan: 同 PNR，行李直挂北京"
+    - flight: "CZ625"
+      route: "广州白云 T2 → 巴厘岛 DPS"
+      departure: "18:30"
+      arrival: "23:40"
+
+return:
+  date: "5月2日"
+  label: "返程"
+  icon: "🛬"
+  segments:
+    - flight: "CZ8482"
+      route: "巴厘岛 DPS → 广州白云 T2"
+      departure: "08:40"
+      arrival: "13:50"
+      note: "建议 05:30 前出门，08:40 航班"
+    - flight: "CZ3115"
+      route: "广州白云 T2 → 北京大兴"
+      departure: "16:00"
+      arrival: "19:15"
+  note: "同 PNR，行李可直挂北京。乘客：LIU/SUMIN、WU/YUTING + 2名儿童。"
+  luggage: "行李额 1pc/I（南方航空经济舱）"

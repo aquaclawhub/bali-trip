@@ -1,0 +1,34 @@
+# 巴厘岛2026行程 — 元数据
+
+title: "🇮🇩 巴厘岛行程安排"
+date_range: "2026年4月24日 — 5月2日"
+travelers:
+  adults: 2
+  children:
+    - name: "点心"
+      age: 7
+      height_cm: 125
+    - name: "果子"
+      age: 3
+      height_cm: 100  # 不到100cm，需推车
+
+departure: "北京出发"
+location: "Seminyak"
+
+# 统计（计算得出）
+days: 9       # 4/24 抵达 → 5/2 返程，共9天
+nights: 8     # 8晚住宿（4/24晚 ~ 5/1晚）
+people: 4
+
+# 住宿
+accommodation:
+  name: "Seminyak Villa"
+  address: "Gang Telaga Waja No. 5A, Seminyak, Kuta Selatan,峇里島 80361，印尼"
+  check_in: "4月24日（预计 23:40 抵达，稍晚入住）"
+  check_out: "5月2日 中午"
+  nights_count: "8晚 · 8个全天（4/25 - 5/2 中午）"
+
+# 汇率（参考）
+exchange_rate:
+  cny_to_idr: 2150
+  usd_to_idr: 15500
