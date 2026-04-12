@@ -1,0 +1,2646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🇮🇩 巴厘岛行程安排 · 2026年4月24日 — 5月2日</title>
+  <style>
+    /* ============================================================
+       BASE RESET & VARIABLES
+    ============================================================ */
+    :root {
+      --primary:   #E05C2E;
+      --accent:    #2E7D32;
+      --warn:      #E65100;
+      --danger:    #C62828;
+      --bg:        #FFF9F5;
+      --card-bg:   #FFFFFF;
+      --text:      #2D2D2D;
+      --text-light:#666;
+      --border:    #E8E0D8;
+      --nav-bg:    #FFFFFF;
+      --nav-shadow:0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family:'PingFang SC','Helvetica Neue',Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a { color:var(--primary); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    img { max-width:100%; border-radius:8px; }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .header {
+      background: linear-gradient(135deg, #E05C2E 0%, #C2491E 100%);
+      color:white;
+      padding:40px 24px 32px;
+      text-align:center;
+    }
+    .header-emoji { font-size:3em; margin-bottom:8px; }
+    .header h1 { font-size:2.2em; font-weight:700; margin-bottom:6px; }
+    .subtitle { font-size:1.1em; opacity:0.9; margin-bottom:4px; }
+    .meta { font-size:0.9em; opacity:0.75; }
+
+    .header-stats {
+      display:flex; justify-content:center; gap:24px;
+      margin-top:20px; flex-wrap:wrap;
+    }
+    .stat-item { text-align:center; }
+    .stat-num { font-size:1.6em; font-weight:700; }
+    .stat-label { font-size:0.8em; opacity:0.8; }
+
+    .nav {
+      position:sticky; top:0; z-index:100;
+      background:var(--nav-bg);
+      box-shadow:var(--nav-shadow);
+      overflow-x:auto;
+    }
+    .nav-inner {
+      display:flex; gap:0; padding:0 16px;
+      white-space:nowrap;
+    }
+    .nav a {
+      display:inline-block;
+      padding:12px 14px;
+      font-size:0.85em;
+      color:var(--text);
+      font-weight:500;
+      border-bottom:3px solid transparent;
+      transition:border 0.2s, color 0.2s;
+    }
+    .nav a:hover {
+      color:var(--primary);
+      border-bottom-color:var(--primary);
+      text-decoration:none;
+    }
+
+    .wrapper { max-width:860px; margin:0 auto; padding:24px 16px 60px; }
+
+    /* ============================================================
+       SECTIONS & CARDS
+    ============================================================ */
+    .section { margin-bottom:40px; }
+
+    .section-title {
+      font-size:1.25em; font-weight:700;
+      color:var(--primary); margin-bottom:16px;
+      display:flex; align-items:center; gap:8px;
+    }
+    .section-title .emoji { font-size:1.1em; }
+
+    .card {
+      background:var(--card-bg);
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 1px 4px rgba(0,0,0,0.06);
+      margin-bottom:16px;
+    }
+    .card-title { font-weight:700; font-size:1.05em; margin-bottom:12px; }
+
+    /* ============================================================
+       INFO GRID
+    ============================================================ */
+    .info-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+      gap:14px;
+    }
+    .info-item { display:flex; gap:10px; align-items:flex-start; }
+    .info-icon { font-size:1.1em; flex-shrink:0; }
+    .info-label { font-size:0.8em; color:var(--text-light); margin-bottom:2px; }
+    .info-value { font-size:0.9em; font-weight:500; }
+
+    /* ============================================================
+       TABLE
+    ============================================================ */
+    .table-wrap { overflow-x:auto; border-radius:10px; }
+    table {
+      width:100%; border-collapse:collapse;
+      font-size:0.9em;
+    }
+    thead tr { background:#F5EDE6; }
+    th, td {
+      padding:10px 14px; text-align:left;
+      border-bottom:1px solid var(--border);
+    }
+    th { font-weight:600; color:var(--text-light); font-size:0.85em; }
+    tbody tr:hover { background:#FFF9F5; }
+    tbody td { vertical-align:top; }
+
+    /* ============================================================
+       BADGES
+    ============================================================ */
+    .badge {
+      display:inline-block;
+      padding:2px 10px; border-radius:20px;
+      font-size:0.8em; font-weight:600;
+      background:#F0F0F0; color:#333;
+    }
+    .badge-ok    { background:#E8F5E9; color:#2E7D32; }
+    .badge-warn  { background:#FFF3E0; color:#E65100; }
+    .badge-info  { background:#E3F2FD; color:#1565C0; }
+    .badge-bad   { background:#FFEBEE; color:#C62828; }
+
+    /* ============================================================
+       DAY BLOCK
+    ============================================================ */
+    .day-block {
+      background:var(--card-bg);
+      border-radius:16px;
+      box-shadow:0 1px 4px rgba(0,0,0,0.06);
+      overflow:hidden;
+      margin-bottom:24px;
+    }
+
+    .day-header {
+      background: linear-gradient(135deg, #E05C2E 0%, #C2491E 100%);
+      color:white; padding:18px 22px;
+      display:flex; align-items:center; gap:16px;
+    }
+    .day-number {
+      font-size:2em; font-weight:800; opacity:0.25;
+      line-height:1;
+    }
+    .day-info { flex:1; }
+    .day-info h3 { font-size:1.15em; font-weight:700; margin-bottom:2px; }
+    .day-date { font-size:0.85em; opacity:0.8; }
+    .day-tags { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+
+    .day-body { padding:20px 22px; }
+
+    .day-highlight {
+      background:#FFF9F5;
+      border-left:4px solid var(--primary);
+      padding:12px 16px;
+      border-radius:0 8px 8px 0;
+      font-size:0.92em; line-height:1.7;
+      margin-bottom:16px;
+    }
+
+    .schedule-table { margin-top:14px; }
+    .schedule-table td:first-child {
+      font-weight:600; color:var(--primary);
+      white-space:nowrap; width:90px;
+    }
+
+    /* ============================================================
+       COLLAPSIBLE DETAILS
+    ============================================================ */
+    details {
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+      margin-top:14px;
+    }
+    summary {
+      padding:12px 16px; cursor:pointer; font-weight:600;
+      background:#F4F8FB; user-select:none;
+      font-size:0.9em;
+    }
+    summary:hover { background:#EAF3FA; }
+    details[open] summary { border-bottom:1px solid var(--border); }
+
+    details > div { padding:14px 16px; }
+
+    /* ============================================================
+       ZOO CARD (Bird Park alt)
+    ============================================================ */
+    .zoo-card {
+      display:grid; grid-template-columns:1fr 2fr;
+      gap:16px; padding:16px 0;
+      border-top:1px solid var(--border);
+    }
+    .zoo-card img {
+      width:100%; height:180px; object-fit:cover;
+      border-radius:10px;
+    }
+    .zoo-name { font-size:1.05em; font-weight:700; margin-bottom:4px; }
+    .zoo-rating { font-size:0.85em; color:var(--text-light); margin-bottom:8px; }
+    .zoo-rating span { color:var(--primary); font-weight:600; }
+    .zoo-card ul { padding-left:18px; font-size:0.88em; }
+    .zoo-card li { margin-bottom:4px; }
+
+    .ticket-table { width:100%; margin-top:10px; font-size:0.85em; }
+    .ticket-table th { background:#F5EDE6; }
+    .ticket-table td, .ticket-table th { padding:6px 10px; }
+
+    .review-block {
+      background:#FAFAFA; border-radius:8px;
+      padding:10px 14px; margin-top:10px;
+      font-size:0.85em;
+    }
+    .review-block .reviewer { font-size:0.8em; color:var(--text-light); margin-bottom:4px; }
+    .review-block .stars { color:var(--primary); }
+
+    /* Zoo compare toggle */
+    .zoo-compare summary {
+      background:#FFF8F0; font-size:0.95em;
+      padding:14px 16px;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 600px) {
+      .header h1 { font-size:1.7em; }
+      .header-stats { gap:16px; }
+      .nav a { padding:10px 12px; font-size:0.8em; }
+      .zoo-card { grid-template-columns:1fr; }
+      .zoo-card img { height:160px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<div class="header" id="top">
+  <div class="header-emoji">🌴</div>
+  <h1>🇮🇩 巴厘岛行程安排</h1>
+  <p class="subtitle">2026年4月24日 — 5月2日</p>
+  <p class="meta">4人 · 北京出发</p>
+
+  <div class="header-stats">
+    <div class="stat-item">
+      <div class="stat-num">9</div>
+      <div class="stat-label">天</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8</div>
+      <div class="stat-label">晚</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">人</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">🇮🇩</div>
+      <div class="stat-label">Seminyak</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== STICKY NAV ==================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#overview">总览</a>
+    <a href="#flights">✈️ 航班</a>
+    <a href="#accommodation">🏠 住宿</a>
+    
+    <a href="#day0">Day 0</a>
+    
+    <a href="#day1">Day 1</a>
+    
+    <a href="#day2">Day 2</a>
+    
+    <a href="#day3">Day 3</a>
+    
+    <a href="#day4">Day 4</a>
+    
+    <a href="#day5">Day 5</a>
+    
+    <a href="#day6">Day 6</a>
+    
+    <a href="#day7">Day 7</a>
+    
+    <a href="#day8">Day 8</a>
+    
+    <a href="#alternative">🗺️ 备选行程</a>
+    <a href="#tips">🎒 实用贴士</a>
+    <a href="#todo">✅ 待办</a>
+  </div>
+</nav>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<div class="wrapper">
+
+  <!-- ===== OVERVIEW ===== -->
+  <div class="section" id="overview">
+    <div class="section-title"><span class="emoji">🗺️</span> 行程总览</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>日期</th><th>星期</th><th>行程亮点</th><th>关键词</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>4/24</td><td>周五</td>
+            <td>出发 · 抵达巴厘岛</td>
+            <td><span class="badge badge-info">抵达日</span></td>
+          </tr>
+          <tr>
+            <td>4/25</td><td>周六</td>
+            <td>Seminyak 海滩 + 别墅休整</td>
+            <td><span class="badge badge-ok">倒时差</span></td>
+          </tr>
+          <tr>
+            <td>4/26</td><td>周日</td>
+            <td>Waterbom Bali 水上乐园</td>
+            <td><span class="badge badge-ok">亲子必去</span></td>
+          </tr>
+          <tr>
+            <td>4/27</td><td>周一</td>
+            <td>Ubud 一日游 → Bali Zoo（梯田打卡 + 瀑布经过 + 动物园）</td>
+            <td><span class="badge badge-ok">⭐ 今日重点</span></td>
+          </tr>
+          <tr>
+            <td>4/28</td><td>周二</td>
+            <td>Sanur 海滩玩水 + Seminyak 海滩俱乐部日落</td>
+            <td><span class="badge badge-ok">⭐ 今日重点</span></td>
+          </tr>
+          <tr>
+            <td>4/29</td><td>周三</td>
+            <td>南 Bali 一日游（Uluwatu 悬崖咖啡 + Nusa Dua 海滩）</td>
+            <td><span class="badge badge-ok">⭐ 今日重点</span></td>
+          </tr>
+          <tr>
+            <td>4/30</td><td>周四</td>
+            <td>Seminyak 休闲日：Villa + 按摩 + 餐饮探索</td>
+            <td><span class="badge badge-ok">慢节奏</span></td>
+          </tr>
+          <tr>
+            <td>5/1</td><td>周五</td>
+            <td>🏁 出发前夜：打包行李 + 退房 + 早点休息</td>
+            <td><span class="badge badge-warn">⚠️ 05:30出发</span></td>
+          </tr>
+          <tr>
+            <td>5/2</td><td>周六</td>
+            <td>返程 · 回家</td>
+            <td><span class="badge badge-info">返程日</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== FLIGHTS ===== -->
+  <div class="section" id="flights">
+    <div class="section-title"><span class="emoji">✈️</span> 航班信息</div>
+
+    <div class="card">
+      <div class="card-title">🛫 去程 · 4月24日</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>航班</th><th>路线</th><th>时间</th><th>备注</th></tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>CZ3106</td>
+              <td>北京大兴 → 广州白云 T2</td>
+              <td>13:30 → 16:40</td>
+              <td>rowspan: 同 PNR，行李直挂北京</td>
+            </tr>
+            
+            <tr>
+              <td>CZ625</td>
+              <td>广州白云 T2 → 巴厘岛 DPS</td>
+              <td>18:30 → 23:40</td>
+              <td></td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🛬 返程 · 5月2日</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>航班</th><th>路线</th><th>时间</th><th>备注</th></tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>CZ8482</td>
+              <td>巴厘岛 DPS → 广州白云 T2</td>
+              <td>08:40 → 13:50</td>
+              <td>建议 05:30 前出门，08:40 航班</td>
+            </tr>
+            
+            <tr>
+              <td>CZ3115</td>
+              <td>广州白云 T2 → 北京大兴</td>
+              <td>16:00 → 19:15</td>
+              <td></td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:10px; font-size:0.88em; color:var(--text-light);">
+        📋 同 PNR，行李可直挂北京。乘客：LIU/SUMIN、WU/YUTING + 2名儿童。<br>
+        🧳 行李额 1pc/I（南方航空经济舱）
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ACCOMMODATION ===== -->
+  <div class="section" id="accommodation">
+    <div class="section-title"><span class="emoji">🏠</span> 住宿</div>
+    <div class="card">
+      <div class="card-title">Seminyak Villa</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div class="info-text">
+            <div class="info-label">地址</div>
+            <div class="info-value">Gang Telaga Waja No. 5A, Seminyak, Kuta Selatan,峇里島 80361，印尼</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📅</div>
+          <div class="info-text">
+            <div class="info-label">入住</div>
+            <div class="info-value">4月24日（预计 23:40 抵达，稍晚入住）</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🚪</div>
+          <div class="info-text">
+            <div class="info-label">退房</div>
+            <div class="info-value">5月2日 中午</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🌙</div>
+          <div class="info-text">
+            <div class="info-label">住宿晚数</div>
+            <div class="info-value">8晚 · 8个全天（4/25 - 5/2 中午）</div>
+          </div>
+        </div>
+      </div>
+
+      <details style="border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden;">
+        <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#FFF8F0;user-select:none;font-size:0.9em;">
+          🗺️ 房东提供的路线指引（点击展开）
+        </summary>
+        <div style="padding:14px 16px;font-size:0.88em;line-height:1.9;">
+          <div style="background:#FFF9F0;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+            <p style="margin-bottom:8px;"><strong>📍 怎么找：</strong></p>
+            <p style="margin-bottom:8px;">从 <strong>Jl. Petitenget</strong> 进巷子，靠近 <strong>Minimart / Baby Revs</strong>。</p>
+            <p style="margin-bottom:8px;">巷子口写着 <strong>"Gang Telaga Waja"</strong>，往里走约 <strong>150米</strong>，左手边即是 <strong>5A</strong>。</p>
+          </div>
+          <div style="background:#F4F8FB;border-radius:8px;padding:12px 16px;">
+            <p style="margin-bottom:6px;"><strong>🚗 接机司机指引：</strong></p>
+            <p>导航搜索 <strong>"Gang Telaga Waja"</strong>，进了巷子直走150米左手边。</p>
+            <p style="margin-top:6px;color:#666;font-size:0.88em;">巷子到底就是 Villa，大件行李下车方便。</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===== DAILY DETAIL BLOCKS ===== -->
+  <div class="section" id="daily">
+    <div class="section-title"><span class="emoji">📅</span> 每日详情</div>
+
+    
+    <div class="day-block" id="day0">
+      <div class="day-header">
+        <div class="day-number">0</div>
+        <div class="day-info">
+          <h3>DAY 0 · 4/24（周五）</h3>
+          <div class="day-date">抵达日 · 北京→广州→峇厘岛</div>
+        </div>
+        <div class="day-tags">
+          
+          <span class="badge" style="background:rgba(255,255,255,0.2);color:white;">抵达</span>
+          
+        </div>
+      </div>
+
+      <div class="day-body">
+
+        
+        <div class="day-highlight">
+          <strong>📋 今日概要：</strong>飞行日。下午从北京出发，经广州中转，夜间抵达巴厘岛，入住 Seminyak Villa。
+        </div>
+        
+
+        
+        <div class="table-wrap schedule-table">
+          <table>
+            <thead>
+              <tr><th>时间</th><th>安排</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>13:30</td>
+                <td>北京大兴机场办理登机（CZ3106）</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>16:40</td>
+                <td>抵达广州白云 T2</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>18:30</td>
+                <td>广州起飞（CZ625）</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>23:40</td>
+                <td>抵达巴厘岛 DPS 机场</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>00:30</td>
+                <td>办理入境 · 取行李</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>~00:40</td>
+                <td>司机接机，前往 Seminyak</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>~01:20</td>
+                <td>入住 Villa · 休息</td>
+                <td></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        
+
+        <!-- Day 1: 商场列表 -->
+        
+
+        <!-- Day 2: Waterbom -->
+        
+
+        <!-- Day 3: 包车信息 -->
+        
+
+        <!-- Day 3: Ubud景点对比 -->
+        
+
+        <!-- Day 4: 交通 -->
+        
+
+        <!-- Day 4: Sanur海滩 -->
+        
+
+        <!-- Day 4: 海滩俱乐部 -->
+        
+
+        <!-- Day 5: 悬崖咖啡 -->
+        
+
+        <!-- Day 5: 海滩 -->
+        
+
+        <!-- Day 5: 为什么放弃 -->
+        
+
+        <!-- Day 6: SPA 列表（外嵌 spa-list.yaml 数据） -->
+        
+
+        <!-- Day 6: 早午餐餐厅 -->
+        
+
+        <!-- Day 6: SPA推荐组合 -->
+        
+
+        <!-- Day 3: Bird Park alternative -->
+        
+
+        <!-- Day 3/4/5 tips -->
+        
+
+        <!-- Day 7/8: notes -->
+        
+          
+          <div style="margin-top:14px; padding:10px 14px; background:#FFF3E0; border-radius:8px; font-size:0.88em;">
+            🚗 <strong>提前预约好包车司机，抵达当天夜间接机需要确认好司机联系方式（WhatsApp）。</strong>
+          </div>
+          
+        
+
+      </div><!-- /day-body -->
+    </div><!-- /day-block -->
+    
+    <div class="day-block" id="day1">
+      <div class="day-header">
+        <div class="day-number">1</div>
+        <div class="day-info">
+          <h3>DAY 1 · 4/25（周六）</h3>
+          <div class="day-date">休息日 · 关键词：倒时差、适应、放松</div>
+        </div>
+        <div class="day-tags">
+          
+          <span class="badge" style="background:rgba(255,255,255,0.2);color:white;">轻松</span>
+          
+          <span class="badge" style="background:#7B2FBE;color:white;">🟣 20:00 日语课</span>
+          
+        </div>
+      </div>
+
+      <div class="day-body">
+
+        
+        <div class="day-highlight">
+          <strong>📋 今日概要：</strong>经过一夜奔波，今天以恢复体力为主。不要安排密集行程，让身体适应时差。
+        </div>
+        
+
+        
+        <div class="table-wrap schedule-table">
+          <table>
+            <thead>
+              <tr><th>时间</th><th>安排</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>上午</td>
+                <td>睡到自然醒，在 Villa 休息</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>下午</td>
+                <td>Seminyak 海滩散步 · 熟悉周边环境</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>15:00</td>
+                <td>前往 Kuta 逛商场（选一个或多个）</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>傍晚</td>
+                <td>回 Seminyak · 别墅泳池放松</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>晚餐</td>
+                <td>Seminyak 区域餐厅（提前查好推荐）</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>17:55–20:25</td>
+                <td>🟣 日语直播课（在 Villa 上课）</td>
+                <td>DAY 1 全天轻松，可在 Villa 上课</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        
+
+        <!-- Day 1: 商场列表 -->
+        
+        <div style="margin-top:20px;">
+          <div class="card-title" style="margin-bottom:14px;">🛍️ 附近商场一览（点击展开查看详情）</div>
+          
+          <details style="margin-bottom:12px; border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#F4F8FB; user-select:none;">
+              🏬 Discovery Mall Bali &nbsp;<span style="font-weight:400; color:var(--text-light); font-size:0.88em;">Kuta · 海滩前 · ⭐4.3</span>
+            </summary>
+            <div style="padding:14px 16px;">
+              <img src="https://images.unsplash.com/photo-1578864694484-4c2c4f3a5c44?w=700&q=80" alt="Discovery Mall Bali" style="width:100%; border-radius:8px; margin-bottom:12px; object-fit:cover; max-height:200px;" onerror="this.style.display='none'">
+              <div style="font-size:0.9em; line-height:1.8;">
+                <p><strong>位置：</strong>Kuta · 海滩前</p>
+                <p><strong>距离：</strong>Seminyak 开车约10-15分钟</p>
+                <p><strong>评分：</strong>⭐4.3</p>
+                <p><strong>营业：</strong>10:00 - 22:30</p>
+                <p><strong>亮点：</strong>海滨Mall，国际品牌，Chagee奶茶（海滩区首家），有露天广场和文化表演区</p>
+                <p><strong>适合：</strong>逛街+看海两不误，傍晚出来正好</p>
+                <p><strong>地址：</strong>Jl. Kartika Plaza, Kuta</p>
+              </div>
+            </div>
+          </details>
+          
+          <details style="margin-bottom:12px; border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#F4F8FB; user-select:none;">
+              🏬 Beachwalk Shopping Center &nbsp;<span style="font-weight:400; color:var(--text-light); font-size:0.88em;">Kuta · 海景 · ⭐4.5（评分最高）</span>
+            </summary>
+            <div style="padding:14px 16px;">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Beachwalk Shopping Center" style="width:100%; border-radius:8px; margin-bottom:12px; object-fit:cover; max-height:200px;" onerror="this.style.display='none'">
+              <div style="font-size:0.9em; line-height:1.8;">
+                <p><strong>位置：</strong>Kuta · 海景</p>
+                <p><strong>距离：</strong>Seminyak 开车约10-15分钟</p>
+                <p><strong>评分：</strong>⭐4.5（评分最高）</p>
+                <p><strong>营业：</strong>10:00 - 23:00</p>
+                <p><strong>亮点：</strong>开放式绿色建筑设计，海景视野，国际品牌（H&M、Zara）、星巴克等，氛围好</p>
+                <p><strong>适合：</strong>大人逛街+拍照打卡，傍晚看日落绝佳</p>
+                <p><strong>地址：</strong>Jl. Pantai Kuta, Kuta</p>
+              </div>
+            </div>
+          </details>
+          
+          <details style="margin-bottom:12px; border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#F4F8FB; user-select:none;">
+              🏬 Seminyak Village &nbsp;<span style="font-weight:400; color:var(--text-light); font-size:0.88em;">Seminyak核心 · 最近 · 步行可达 · ⭐4.1</span>
+            </summary>
+            <div style="padding:14px 16px;">
+              <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf4?w=700&q=80" alt="Seminyak Village" style="width:100%; border-radius:8px; margin-bottom:12px; object-fit:cover; max-height:200px;" onerror="this.style.display='none'">
+              <div style="font-size:0.9em; line-height:1.8;">
+                <p><strong>位置：</strong>Seminyak核心 · 最近 · 步行可达</p>
+                <p><strong>距离：</strong>步行/打车几分钟 ← 离Villa最近</p>
+                <p><strong>评分：</strong>⭐4.1</p>
+                <p><strong>营业：</strong>10:00 - 22:00</p>
+                <p><strong>亮点：</strong>两层现代商场，有空调，精品店+咖啡馆为主，躲正午太阳好去处</p>
+                <p><strong>适合：</strong>不想跑远、顺便逛逛的情况</p>
+                <p><strong>地址：</strong>Jl. Kayu Cendana No.8, Seminyak</p>
+              </div>
+            </div>
+          </details>
+          
+          <details style="margin-bottom:12px; border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#F4F8FB; user-select:none;">
+              🏬 Trans Studio Mall Bali &nbsp;<span style="font-weight:400; color:var(--text-light); font-size:0.88em;">Sunset Road · 室内游乐园+影院 · 最适合带孩子 · ⭐4.2</span>
+            </summary>
+            <div style="padding:14px 16px;">
+              <img src="https://images.unsplash.com/photo-1562159247-0f9e1e3f4f2e?w=700&q=80" alt="Trans Studio Mall Bali" style="width:100%; border-radius:8px; margin-bottom:12px; object-fit:cover; max-height:200px;" onerror="this.style.display='none'">
+              <div style="font-size:0.9em; line-height:1.8;">
+                <p><strong>位置：</strong>Sunset Road · 室内游乐园+影院 · 最适合带孩子</p>
+                <p><strong>距离：</strong>Seminyak 开车约15-20分钟</p>
+                <p><strong>评分：</strong>⭐4.2</p>
+                <p><strong>营业：</strong>10:00 - 22:00</p>
+                <p><strong>亮点：</strong>商场+室内主题乐园+电影院，国际品牌，餐饮丰富</p>
+                <p><strong>适合：</strong>带孩子来这里绝对不会错，有儿童游乐设施可以消耗精力</p>
+                <p><strong>地址：</strong>Jl. Sunset Road, Kuta</p>
+              </div>
+            </div>
+          </details>
+          
+        </div>
+        
+
+        <!-- Day 2: Waterbom -->
+        
+
+        <!-- Day 3: 包车信息 -->
+        
+
+        <!-- Day 3: Ubud景点对比 -->
+        
+
+        <!-- Day 4: 交通 -->
+        
+
+        <!-- Day 4: Sanur海滩 -->
+        
+
+        <!-- Day 4: 海滩俱乐部 -->
+        
+
+        <!-- Day 5: 悬崖咖啡 -->
+        
+
+        <!-- Day 5: 海滩 -->
+        
+
+        <!-- Day 5: 为什么放弃 -->
+        
+
+        <!-- Day 6: SPA 列表（外嵌 spa-list.yaml 数据） -->
+        
+
+        <!-- Day 6: 早午餐餐厅 -->
+        
+
+        <!-- Day 6: SPA推荐组合 -->
+        
+
+        <!-- Day 3: Bird Park alternative -->
+        
+
+        <!-- Day 3/4/5 tips -->
+        
+
+        <!-- Day 7/8: notes -->
+        
+          
+          <div style="margin-top:14px; padding:10px 14px; background:#FFF3E0; border-radius:8px; font-size:0.88em;">
+            💡 <strong>Villa 第一天可以逛逛附近，找到最近的 7-11/便利店、餐厅、按摩店位置，熟悉环境。如果带娃累了，4个商场里 Trans Studio Mall 最适合孩子。</strong>
+          </div>
+          
+        
+
+      </div><!-- /day-body -->
+    </div><!-- /day-block -->
+    
+    <div class="day-block" id="day2">
+      <div class="day-header">
+        <div class="day-number">2</div>
+        <div class="day-info">
+          <h3>DAY 2 · 4/26（周日）</h3>
+          <div class="day-date">Waterbom Bali 水上乐园</div>
+        </div>
+        <div class="day-tags">
+          
+          <span class="badge" style="background:var(--accent);color:white;">亲子必去</span>
+          
+        </div>
+      </div>
+
+      <div class="day-body">
+
+        
+        <div class="day-highlight">
+          <strong>📋 今日概要：</strong>亚洲顶级水上乐园，有专门适合儿童的区域，7岁和3岁都能找到玩的。一整天安排。
+        </div>
+        
+
+        
+
+        <!-- Day 1: 商场列表 -->
+        
+
+        <!-- Day 2: Waterbom -->
+        
+        <div class="info-grid" style="margin-top:18px;">
+          <div class="info-item">
+            <div class="info-icon">⭐</div>
+            <div class="info-text">
+              <div class="info-label">评分</div>
+              <div class="info-value">TripAdvisor 4.5+ · 亚洲顶级</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">⏱️</div>
+            <div class="info-text">
+              <div class="info-label">建议时长</div>
+              <div class="info-value">6-8 小时（一整天）</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-text">
+              <div class="info-label">位置</div>
+              <div class="info-value">Jl. Kartika Plaza, Kuta（Discovery Mall隔壁）</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">💰</div>
+            <div class="info-text">
+              <div class="info-label">参考票价</div>
+              <div class="info-value">约 200-300 RMB/人</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🕘</div>
+            <div class="info-text">
+              <div class="info-label">营业时间</div>
+              <div class="info-value">每天 09:00 - 18:00</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🌡️</div>
+            <div class="info-text">
+              <div class="info-label">建议到园时间</div>
+              <div class="info-value">早上9点前到达，先冲热门项目</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 票价对比 -->
+        <div style="margin-top:18px;">
+          <div class="card-title" style="margin-bottom:12px;">🎟️ 票价对比 &amp; 购票（点击展开）</div>
+          <details style="border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#F4F8FB; user-select:none;">
+              🎟️ 票价一览 · 官方四人套票最划算
+            </summary>
+            <div style="padding:14px 16px; font-size:0.9em;">
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>购票渠道</th><th>单人价格</th><th>4人总价</th><th>备注</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>官方四人套票</strong> ⭐推荐</td>
+                      <td>约¥300/人</td>
+                      <td>约¥1,200/4人</td>
+                      <td>含家庭储物柜+4毛巾+4冰淇淋+SPA八折</td>
+                    </tr>
+                    <tr>
+                      <td>官方单人票</td>
+                      <td>IDR 495,000</td>
+                      <td>约¥2,000/4人</td>
+                      <td>无附加，需另租毛巾储物柜</td>
+                    </tr>
+                    <tr>
+                      <td>Klook 客路</td>
+                      <td>约¥240-330</td>
+                      <td>约¥960-1,320</td>
+                      <td>价格浮动，以实际日期为准</td>
+                    </tr>
+                    <tr>
+                      <td>KKday</td>
+                      <td>约¥140起</td>
+                      <td>约¥560起</td>
+                      <td>票价范围较大，需选具体日期</td>
+                    </tr>
+                    <tr>
+                      <td>携程/飞猪</td>
+                      <td>约¥300-350</td>
+                      <td>约¥1,200-1,400</td>
+                      <td>淡旺季浮动</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style="margin-top:14px; padding:12px 16px; background:#D1ECF1; border-radius:8px; color:#0C5460;">
+                <strong>⭐ 建议购买：官方四人套票（Four Pack Pass）（Four Pack Pass）</strong><br>
+                价格：<strong>IDR 2,600,000</strong>（约¥1,200/4人）<br>
+                包含：<strong>家庭储物柜1个 + 毛巾4条 + 冰淇淋4份 + SPA20%折扣</strong><br>
+                购买途径：<a href="https://www.waterbom-bali.com/ticket" target="_blank" style="color:var(--primary);">waterbom-bali.com/ticket</a>（官网直购，支持VISA/Mastercard）<br>
+                <span style="font-size:0.88em;">提示：4月26日是周日，属于常规旺季，官方四人套票比分开买单人票划算很多</span>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- 分工方案 -->
+        
+        <div style="margin-top:18px;">
+          <div class="card-title" style="margin-bottom:12px;">👨‍👩‍👧‍👦 大人分工方案（点击展开）</div>
+          <details style="border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#FFF3E0; user-select:none;">
+              👨‍👩‍👧‍👦 大人分工方案（点击查看）
+            </summary>
+            <div style="padding:14px 16px; font-size:0.9em; line-height:1.8;">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:14px;">
+                
+                <div style="background:#E3F2FD; border-radius:10px; padding:14px;">
+                  <div style="font-weight:700; color:#1565C0; margin-bottom:8px;">爸爸</div>
+                  <ul style="margin:0; padding-left:18px; font-size:0.9em;">
+                    
+                    <li>主要负责带 7岁点心</li>
+                    
+                    <li>可以一起玩所有身高达标的项目：Climax、Fast N Fierce、Pipeline 等</li>
+                    
+                    <li>带头排队热门滑道，减少等待时间</li>
+                    
+                    <li>有双人/多人滑道时配合拼玩</li>
+                    
+                  </ul>
+                </div>
+                
+                <div style="background:#FCE4EC; border-radius:10px; padding:14px;">
+                  <div style="font-weight:700; color:#AD1457; margin-bottom:8px;">妈妈</div>
+                  <ul style="margin:0; padding-left:18px; font-size:0.9em;">
+                    
+                    <li>主要负责带 3岁果子</li>
+                    
+                    <li>陪同在儿童区（Kids Club / Crazy Canyon）玩水和滑梯</li>
+                    
+                    <li>大人在旁边看护区陪玩，不走散</li>
+                    
+                    <li>协调两人喝水、防晒、补觉等日常需求</li>
+                    
+                  </ul>
+                </div>
+                
+              </div>
+              <div style="background:#FFF9C4; border-radius:8px; padding:12px 14px; font-size:0.88em;">
+                <strong>💡 灵活建议：</strong>水上乐园允许换人接管陪同。如果爸爸想玩大型项目，可以临时和妈妈换手，让妈妈看护一会儿。热门项目建议一入园就先去排队，趁早上人少把想玩的都刷完。
+              </div>
+              <div style="margin-top:10px; font-size:0.88em; color:#555;">
+                <strong>📍 集合点：</strong>每次分流活动前约定固定汇合点（如入口大招牌或某个餐厅门口），万一走散可以在10分钟内碰头。
+              </div>
+            </div>
+          </details>
+        </div>
+        
+
+        <!-- 身高与项目 -->
+        
+        <div style="margin-top:18px;">
+          <div class="card-title" style="margin-bottom:12px;">🎢 身高与可玩项目（点击展开）</div>
+          
+          <details style="margin-top:10px; border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#F4F8FB; user-select:none;">
+              点心（7岁 125cm）
+            </summary>
+            <div style="padding:14px 16px; font-size:0.9em; line-height:2;">
+              
+              <p style="margin-bottom:8px;"><strong style="color:var(--accent);">✅ 都能玩：</strong></p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+                
+                <span class="badge badge-ok">Python（100cm+）</span>
+                
+                <span class="badge badge-ok">Pipeline（100cm+）</span>
+                
+                <span class="badge badge-ok">Green Vipers（100cm+）</span>
+                
+                <span class="badge badge-ok">Twin Racers（110cm+）</span>
+                
+                <span class="badge badge-ok">Climax（120cm+）</span>
+                
+                <span class="badge badge-ok">Fast N Fierce（120cm+）</span>
+                
+                <span class="badge badge-ok">Smashdown 2.0（122cm+）</span>
+                
+                <span class="badge badge-ok">Boomerang（122cm+）</span>
+                
+                <span class="badge badge-ok">The Drop（122cm+）</span>
+                
+                <span class="badge badge-ok">Double Twist（122cm+）</span>
+                
+                <span class="badge badge-ok">Constrictor（122cm+）</span>
+                
+                <span class="badge badge-ok">Lazy River（全身高）</span>
+                
+              </div>
+              
+              
+              <p><strong style="color:var(--danger);">❌ 玩不了：</strong></p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                
+                <span class="badge badge-bad">FlowRider（130cm/140cm）</span>
+                
+              </div>
+              
+            </div>
+          </details>
+          
+          <details style="margin-top:10px; border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+            <summary style="padding:12px 16px; cursor:pointer; font-weight:600; background:#F4F8FB; user-select:none;">
+              果子（3岁 <100cm）
+            </summary>
+            <div style="padding:14px 16px; font-size:0.9em; line-height:2;">
+              
+              <p style="margin-bottom:8px;"><strong style="color:var(--accent);">✅ 都能玩：</strong></p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+                
+                <span class="badge badge-ok">Mini Boomerang（80cm起，大人陪同）</span>
+                
+                <span class="badge badge-ok">AquaPlay / Funtastic（儿童专属区，80cm起）</span>
+                
+                <span class="badge badge-ok">Lazy River（漂流河，所有身高）</span>
+                
+              </div>
+              
+              
+              <p><strong style="color:var(--danger);">❌ 玩不了：</strong></p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                
+                <span class="badge badge-bad">Python（100cm起）</span>
+                
+                <span class="badge badge-bad">Pipeline（100cm起）</span>
+                
+                <span class="badge badge-bad">Twin Racers（110cm起）</span>
+                
+                <span class="badge badge-bad">Climax 及以上刺激项目</span>
+                
+              </div>
+              
+            </div>
+          </details>
+          
+        </div>
+        
+        
+
+        <!-- Day 3: 包车信息 -->
+        
+
+        <!-- Day 3: Ubud景点对比 -->
+        
+
+        <!-- Day 4: 交通 -->
+        
+
+        <!-- Day 4: Sanur海滩 -->
+        
+
+        <!-- Day 4: 海滩俱乐部 -->
+        
+
+        <!-- Day 5: 悬崖咖啡 -->
+        
+
+        <!-- Day 5: 海滩 -->
+        
+
+        <!-- Day 5: 为什么放弃 -->
+        
+
+        <!-- Day 6: SPA 列表（外嵌 spa-list.yaml 数据） -->
+        
+
+        <!-- Day 6: 早午餐餐厅 -->
+        
+
+        <!-- Day 6: SPA推荐组合 -->
+        
+
+        <!-- Day 3: Bird Park alternative -->
+        
+
+        <!-- Day 3/4/5 tips -->
+        
+          
+          <div style="margin-top:14px; padding:10px 14px; background:#FFF9F0; border-radius:8px; font-size:0.88em;">
+             <strong></strong>
+          </div>
+          
+        
+
+        <!-- Day 7/8: notes -->
+        
+
+      </div><!-- /day-body -->
+    </div><!-- /day-block -->
+    
+    <div class="day-block" id="day3">
+      <div class="day-header">
+        <div class="day-number">3</div>
+        <div class="day-info">
+          <h3>DAY 3 · 4/27（周一）</h3>
+          <div class="day-date">Ubud 一日游 ⭐ 今日重点</div>
+        </div>
+        <div class="day-tags">
+          
+          <span class="badge" style="background:var(--accent);color:white;">⭐ 核心日</span>
+          
+          <span class="badge" style="background:#7B2FBE;color:white;">🟣 20:00 日语课</span>
+          
+        </div>
+      </div>
+
+      <div class="day-body">
+
+        
+        <div class="day-highlight">
+          <strong>📋 今日概要：</strong>上午包车顺路打卡梯田+瀑布（拍照打卡不停留太久）→ Ubud 镇午餐 → 下午专注玩 Bali Zoo。
+        </div>
+        
+
+        
+        <div class="table-wrap schedule-table">
+          <table>
+            <thead>
+              <tr><th>时间</th><th>安排</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>08:00</td>
+                <td>出发前往德格拉朗梯田</td>
+                <td>包车，车程约40分钟</td>
+              </tr>
+              
+              <tr>
+                <td>08:45</td>
+                <td>德格拉朗梯田（Tegallalang）</td>
+                <td>📸 拍照打卡，30-45分钟，不深度逛</td>
+              </tr>
+              
+              <tr>
+                <td>09:30</td>
+                <td>路观德哥拉朗瀑布</td>
+                <td>车程20分钟，📸 拍个照不停留太久</td>
+              </tr>
+              
+              <tr>
+                <td>10:00</td>
+                <td>前往 Ubud 镇</td>
+                <td>车程约30分钟</td>
+              </tr>
+              
+              <tr>
+                <td>10:30</td>
+                <td>Ubud 镇中心：找地方吃午餐</td>
+                <td>脏鸭餐/Café Lotus；让小孩休息</td>
+              </tr>
+              
+              <tr>
+                <td>12:00</td>
+                <td>出发前往 Bali Zoo</td>
+                <td>车程约25分钟</td>
+              </tr>
+              
+              <tr>
+                <td>12:30</td>
+                <td>抵达 Bali Zoo ⭐</td>
+                <td>16:00最后入场，17:00关门</td>
+              </tr>
+              
+              <tr>
+                <td>12:30–17:00</td>
+                <td>Bali Zoo 自由游玩</td>
+                <td>约4.5小时，大象泥/猩猩早餐需提前预约</td>
+              </tr>
+              
+              <tr>
+                <td>17:00</td>
+                <td>Bali Zoo 关门，19:00前必须出发返程</td>
+                <td>🟣 赶在20:00前回到Villa上课！</td>
+              </tr>
+              
+              <tr>
+                <td>17:40</td>
+                <td>回到 Villa</td>
+                <td>🟣 20:00–23:30 日语直播课</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        
+
+        <!-- Day 1: 商场列表 -->
+        
+
+        <!-- Day 2: Waterbom -->
+        
+
+        <!-- Day 3: 包车信息 -->
+        
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden;">
+          <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#EFF6FF;user-select:none;">
+            🚗 包车信息（点击查看）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+            <div style="margin-bottom:12px;">
+              <strong>📱 推荐平台：</strong>
+              <a href="https://www.klook.com/zh-CN/activity/800-private-car-charter-bali/" target="_blank" style="color:var(--primary);font-weight:600;">Klook 巴厘岛包车</a>
+              &nbsp;（⭐4.6 · 27K评价 · 200K+人参加过）
+            </div>
+            <div style="background:#F0F9FF;border-radius:8px;padding:12px 16px;margin-bottom:14px;">
+              <div style="margin-bottom:6px;"><strong>💰 4人 · 10小时 · 中文司机</strong></div>
+              <div style="font-size:0.88em;color:#555;">约¥280–430 · 1-5人团 5座MPV · Toyota Avanza/Ertiga</div>
+            </div>
+            <div style="margin-bottom:10px;"><strong>✅ 费用包含</strong><br>司机 + 油费 + 空调车 + 停车费 + 过路费</div>
+            
+            <div style="margin-bottom:10px;">
+              <strong>❌ 需现场付司机现金</strong>
+              <ul style="margin:6px 0 0 0;padding-left:20px;">
+                
+                <li>超时费：约 IDR 50,000/小时（≈¥25）</li>
+                
+                <li>司机餐费：超时6小时以上通常需请司机吃饭，无固定金额</li>
+                
+                <li>凌晨接载（0:00–6:00）：加约 IDR 250,000（≈¥125）</li>
+                
+              </ul>
+            </div>
+            
+            
+            <div style="margin-bottom:10px;"><strong>🛡️ 保险</strong><br>包车交通意外险为印尼强制险，已含在车费中。如需行程取消/意外医疗保障，可加购 Klook 活动险（约¥20–50/人），或使用已有旅行险/信用卡险覆盖。</div>
+            
+          </div>
+        </details>
+        
+
+        <!-- Day 3: Ubud景点对比 -->
+        
+        <div style="margin-top:20px;">
+          <div class="card-title" style="margin-bottom:12px;">🗺️ Ubud 各景点对比（当前方案参考）</div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>景点</th><th>评分</th><th>门票</th><th>3岁幼儿</th><th>7岁幼儿</th><th>说明</th></tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <td><strong>德格拉朗梯田</strong></td>
+                  <td>⭐ 4.4</td>
+                  <td>1.5万 IDR</td>
+                  <td><span class="badge badge-warn">推车勉强</span></td>
+                  <td><span class="badge badge-ok">✅ 可以</span></td>
+                  <td>田埂窄，需看好幼儿；建议早上去</td>
+                </tr>
+                
+                <tr>
+                  <td><strong>德哥拉朗瀑布</strong></td>
+                  <td>⭐ 4.3</td>
+                  <td>1.5万 IDR</td>
+                  <td><span class="badge badge-warn">要走台阶</span></td>
+                  <td><span class="badge badge-ok">✅ 可以</span></td>
+                  <td>约15分钟台阶路；有卖水果/饮料的地方，瀑布底可玩水</td>
+                </tr>
+                
+                <tr>
+                  <td><strong>Campuhan Ridge Walk</strong></td>
+                  <td>⭐ 4.3</td>
+                  <td>免费</td>
+                  <td><span class="badge badge-bad">❌ 不推荐</span></td>
+                  <td><span class="badge badge-ok">✅ 可以</span></td>
+                  <td>入口有台阶，非推车友好；全程无遮挡，注意防晒</td>
+                </tr>
+                
+                <tr>
+                  <td><strong>Ubud Palace</strong></td>
+                  <td>⭐ 4.2</td>
+                  <td>免费</td>
+                  <td><span class="badge badge-ok">✅ 可以</span></td>
+                  <td><span class="badge badge-ok">✅ 可以</span></td>
+                  <td>10分钟逛完，镇中心，顺便看建筑风格</td>
+                </tr>
+                
+                <tr>
+                  <td><strong>Ubud Art Market</strong></td>
+                  <td>⭐ 3.8</td>
+                  <td>—</td>
+                  <td><span class="badge badge-ok">✅ 可以</span></td>
+                  <td><span class="badge badge-ok">✅ 可以</span></td>
+                  <td>可砍价（从标价1/3开始还）；注意质量</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+
+        <!-- Day 4: 交通 -->
+        
+
+        <!-- Day 4: Sanur海滩 -->
+        
+
+        <!-- Day 4: 海滩俱乐部 -->
+        
+
+        <!-- Day 5: 悬崖咖啡 -->
+        
+
+        <!-- Day 5: 海滩 -->
+        
+
+        <!-- Day 5: 为什么放弃 -->
+        
+
+        <!-- Day 6: SPA 列表（外嵌 spa-list.yaml 数据） -->
+        
+
+        <!-- Day 6: 早午餐餐厅 -->
+        
+
+        <!-- Day 6: SPA推荐组合 -->
+        
+
+        <!-- Day 3: Bird Park alternative -->
+        
+        <details class="zoo-compare">
+          <summary>🦜 备选方案：Bali Bird Park（点击查看）</summary>
+          <div class="compare-body">
+            <div class="zoo-card">
+              <img src="https://res.klook.com/image/upload/w_750,h_469,c_fill,q_85/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/pkthu3dtoecpnm7dabz5.webp" alt="Bali Bird Park">
+              <div>
+                <div class="zoo-name">🦜 Bali Bird Park</div>
+                <div class="zoo-rating">Tripadvisor <span>4.5</span> · Klook <span>4.7/5</span> · 20K+人参加过</div>
+                <ul>
+                  <li>地点：Gianyar区，紧邻Bali Zoo，开车约5分钟</li>
+                  <li>开放时间：09:00 - 17:30（比 Zoo 晚关门30分钟）</li>
+                  <li>游览时间：2-3小时</li>
+                  <li>幼儿友好：✅ 推车/轮椅全友好，全年龄</li>
+                  <li>亮点：1,300+只鸟，250+物种；自由飞行鸟表演、喂鹦鹉（鹦鹉会落到手臂上！）、4D电影、科莫多龙互动</li>
+                  <li>园内大型餐厅，天热可进4D影厅乘凉休息</li>
+                  <li>可加购鸟明星午餐套票（含与鸟共餐）</li>
+                </ul>
+                <table class="ticket-table">
+                  <thead><tr><th>票种</th><th>平台</th><th>价格</th></tr></thead>
+                  <tbody>
+                    <tr><td>普通门票</td><td>Klook</td><td>约¥112/人</td></tr>
+                    <tr><td>鸟明星午餐套票</td><td>Klook</td><td>约¥127/人</td></tr>
+                    <tr><td>普通门票</td><td>Tripadvisor</td><td>约$18/人</td></tr>
+                  </tbody>
+                </table>
+                <div class="review-block">
+                  <div class="reviewer">🇰🇷 Klook用户 · 2025年1月</div>
+                  <div>太棒了~ 和我在韩国去过的鸟园都没得比！表演真的很好，还会到处拍照，还可以买，没有压力。中间有很多喂食体验，不会无聊。电影院每次放映15分钟的4D，天热的时候就进去乘凉，再回去继续玩。</div>
+                </div>
+                <div class="review-block">
+                  <div class="reviewer">🇦🇺 Facebook · Bali Pages群组</div>
+                  <div>强烈推荐！门票非常实惠，鸟类种类繁多。我喜欢它们自由探索公园并与你互动。全天的鸟类表演也非常精彩。维护得很好，工作人员很友好，餐厅也不错。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+        
+
+        <!-- Day 3/4/5 tips -->
+        
+          
+          <div style="margin-top:14px; padding:10px 14px; background:#FFF9F0; border-radius:8px; font-size:0.88em;">
+            💡 <strong>如果小孩上午累了想多休息，可以晚点出发，把梯田/瀑布压缩或跳过，直接去 Zoo。Zoo 下午场3-5小时足够玩好，不用赶。</strong>
+          </div>
+          
+        
+
+        <!-- Day 7/8: notes -->
+        
+
+      </div><!-- /day-body -->
+    </div><!-- /day-block -->
+    
+    <div class="day-block" id="day4">
+      <div class="day-header">
+        <div class="day-number">4</div>
+        <div class="day-info">
+          <h3>DAY 4 · 4/28（周二）</h3>
+          <div class="day-date">Seminyak 海滩俱乐部</div>
+        </div>
+        <div class="day-tags">
+          
+          <span class="badge" style="background:rgba(255,255,255,0.2);color:white;">休闲</span>
+          
+        </div>
+      </div>
+
+      <div class="day-body">
+
+        
+        <div class="day-highlight">
+          <strong>📋 今日概要：</strong>上午出发 Sanur 海滩（玩沙踏浪）→ 海滩 café 午餐冲淡换衣 → 下午回 Seminyak 做 SPA / 午休 → 傍晚海滩俱乐部看日落。
+        </div>
+        
+
+        
+        <div class="table-wrap schedule-table">
+          <table>
+            <thead>
+              <tr><th>时间</th><th>安排</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>08:00</td>
+                <td>出发前往 Sanur</td>
+                <td>Bluebird/Grab，约30分钟车程</td>
+              </tr>
+              
+              <tr>
+                <td>08:30</td>
+                <td>抵达 Sanur 海滩（Mertasari Beach）</td>
+                <td>公共海滩，免费入场</td>
+              </tr>
+              
+              <tr>
+                <td>08:30–12:00</td>
+                <td>Sanur 海滩玩沙踏浪</td>
+                <td>东海岸浅滩，无浪，3岁可下海；带沙滩垫/泳衣</td>
+              </tr>
+              
+              <tr>
+                <td>12:00</td>
+                <td>海滩 café 午餐 + 冲淡换衣</td>
+                <td>点餐后用 café 设施淡水冲脚换衣服</td>
+              </tr>
+              
+              <tr>
+                <td>13:30</td>
+                <td>返回 Seminyak</td>
+                <td>约30分钟车程，孩子可在车上睡</td>
+              </tr>
+              
+              <tr>
+                <td>14:00–16:00</td>
+                <td>Villa 午休 / 大人 SPA</td>
+                <td>Seminyak 按摩/SPA 选择极多，可提前预约</td>
+              </tr>
+              
+              <tr>
+                <td>16:30</td>
+                <td>出发前往 La Plancha</td>
+                <td>步行可达，位置在 Seminyak 海滩</td>
+              </tr>
+              
+              <tr>
+                <td>17:00</td>
+                <td>La Plancha 看日落</td>
+                <td>彩色懒人沙发，低消约 IDR 150,000–300,000/人</td>
+              </tr>
+              
+              <tr>
+                <td>19:00</td>
+                <td>Seminyak 区域晚餐</td>
+                <td>推荐餐厅：Potato Head 系列 / Revolver / Biku</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        
+
+        <!-- Day 1: 商场列表 -->
+        
+
+        <!-- Day 2: Waterbom -->
+        
+
+        <!-- Day 3: 包车信息 -->
+        
+
+        <!-- Day 3: Ubud景点对比 -->
+        
+
+        <!-- Day 4: 交通 -->
+        
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:14px;overflow:hidden;">
+          <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#EFF6FF;user-select:none;">
+            🚗 Seminyak → Sanur 交通（点击查看）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+            <div style="margin-bottom:10px;">
+              <strong>推荐方式：Bluebird 出租车 / Grab / GoCar</strong>
+              <ul style="margin:6px 0 0 0;padding-left:20px;">
+                <li>车程：约 25–35 分钟（取决于路况）</li>
+                <li>费用：约 IDR 80,000–150,000（≈ ¥40–75）</li>
+                <li>叫车：从 Seminyak 任意地点叫车，直接输入 "Sanur Beach" 导航即可</li>
+                <li>回程：同方式返回，或让包车司机等候一天（可和 Day 3 司机协商）</li>
+              </ul>
+            </div>
+            <div style="background:#FFF9F0;border-radius:8px;padding:10px 14px;font-size:0.88em;">
+              💡 <strong>小提示：</strong>如果 Day 3 的包车司机服务满意，可以直接问司机是否愿意 Day 4 也跟着，包一天车价格比单次叫车更划算，且有空调车随时等候，孩子玩累了可以随时上车休息。
+            </div>
+          </div>
+        </details>
+        
+
+        <!-- Day 4: Sanur海滩 -->
+        
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden;">
+          <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#F0FFF4;user-select:none;">
+            🏖️ Sanur 海滩玩水攻略（点击查看）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+            <div style="margin-bottom:10px;">
+              <strong>推荐海滩：Mertasari Beach</strong><br>Sanur 最适合亲子下海的海滩，东海岸有珊瑚礁保护，海水平静、浪小，3岁孩子可以安全踏浪。
+            </div>
+            
+            <div style="margin-bottom:10px;">
+              <strong>公共设施</strong>
+              <ul style="margin:6px 0 0 0;padding-left:20px;">
+                
+                <li>公共淋浴室：有冷水冲洗，设施较基础（无热水），通常免费或收少量费用</li>
+                
+                <li>更衣区：较简陋，建议在海滩 café 里换好衣服过来</li>
+                
+                <li>最推荐：找一家海滩 café 坐下，点杯饮料/吃个午饭，用他们的卫生间和冲洗设施，比公共淋浴室舒服很多</li>
+                
+              </ul>
+            </div>
+            
+            
+            <div style="margin-bottom:10px;">
+              <strong>建议自带</strong><br>大沙滩巾 / 浴巾、泳衣 + 备用换洗衣物、沙滩玩具（如想玩沙）、防晒霜、帽子
+            </div>
+            
+          </div>
+        </details>
+        
+
+        <!-- Day 4: 海滩俱乐部 -->
+        
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden;">
+          <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#FFF3E0;user-select:none;">
+            🏖️ 海滩俱乐部攻略 La Plancha（点击查看）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+            <div style="margin-bottom:10px;">
+              <ul style="margin:6px 0 0 0;padding-left:20px;">
+                <li><strong>入场：</strong>免费，但必须消费</li>
+                <li><strong>低消：</strong>约 IDR 150,000–300,000/人（≈ ¥75–150/人）</li>
+                <li><strong>特色：</strong>彩色懒人沙发 + 直接沙滩 + 著名日落景观，超适合拍照</li>
+                <li><strong>儿童：</strong>可以带娃，主要是大人的放松环境</li>
+                <li><strong>时间：</strong>建议 16:30 前到，傍晚是黄金时段</li>
+                <li><strong>地址：</strong>Jl. Arjuna, Seminyak（步行可达 Seminyak 各 villa 区域）</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+        
+
+        <!-- Day 5: 悬崖咖啡 -->
+        
+
+        <!-- Day 5: 海滩 -->
+        
+
+        <!-- Day 5: 为什么放弃 -->
+        
+
+        <!-- Day 6: SPA 列表（外嵌 spa-list.yaml 数据） -->
+        
+
+        <!-- Day 6: 早午餐餐厅 -->
+        
+
+        <!-- Day 6: SPA推荐组合 -->
+        
+
+        <!-- Day 3: Bird Park alternative -->
+        
+
+        <!-- Day 3/4/5 tips -->
+        
+          
+          <div style="margin-top:14px; padding:10px 14px; background:#FFF9F0; border-radius:8px; font-size:0.88em;">
+            💡 <strong>如果孩子上午玩累了，下午 SPA 可以跳过，直接回 Villa 休息。La Plancha 傍晚场次即使 17:00 到也有足够时间看日落，不用赶。</strong>
+          </div>
+          
+        
+
+        <!-- Day 7/8: notes -->
+        
+
+      </div><!-- /day-body -->
+    </div><!-- /day-block -->
+    
+    <div class="day-block" id="day5">
+      <div class="day-header">
+        <div class="day-number">5</div>
+        <div class="day-info">
+          <h3>DAY 5 · 4/29（周三）</h3>
+          <div class="day-date">南 Bali 环线：Uluwatu 悬崖咖啡 ☕ + Nusa Dua 海滩 🏖️</div>
+        </div>
+        <div class="day-tags">
+          
+          <span class="badge" style="background:badge-ok;color:white;">⭐ 今日重点</span>
+          
+        </div>
+      </div>
+
+      <div class="day-body">
+
+        
+        <div class="day-highlight">
+          <strong>📋 今日概要：</strong>包车走南部环线——悬崖咖啡厅看海 → Nusa Dua 海滩躺椅休息。带娃轻松，全程不用下悬崖台阶。
+        </div>
+        
+
+        
+        <div class="table-wrap schedule-table">
+          <table>
+            <thead>
+              <tr><th>时间</th><th>安排</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>09:00</td>
+                <td>出发前往 Uluwatu</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>10:00</td>
+                <td>☕ Mana Uluwatu 悬崖咖啡——车直达停车场，不用走台阶，抱娃看海，轻松拍照</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>11:30</td>
+                <td>开车前往 Nusa Dua（顺路风景）</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>12:00</td>
+                <td>🏖️ Mengiat Beach（Nusa Dua）——海滩边午餐，租2个躺椅（当地 vendor，约 IDR 100-150k）</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>12:00–15:00</td>
+                <td>孩子玩沙玩水，大人晒太阳 / 休息</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>15:00</td>
+                <td>下午茶 / 休息</td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>16:00</td>
+                <td>返回 Seminyak</td>
+                <td></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        
+
+        <!-- Day 1: 商场列表 -->
+        
+
+        <!-- Day 2: Waterbom -->
+        
+
+        <!-- Day 3: 包车信息 -->
+        
+
+        <!-- Day 3: Ubud景点对比 -->
+        
+
+        <!-- Day 4: 交通 -->
+        
+
+        <!-- Day 4: Sanur海滩 -->
+        
+
+        <!-- Day 4: 海滩俱乐部 -->
+        
+
+        <!-- Day 5: 悬崖咖啡 -->
+        
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden;">
+          <summary>☕ Mana Uluwatu 悬崖咖啡厅介绍</summary>
+          <div style="padding:10px 14px;">
+            <ul style="padding-left:18px; font-size:0.9em;">
+              <li>📍 <strong>位置：</strong>Uluwatu Surf Villas 内，悬崖顶上</li>
+              <li>🚗 <strong>停车：</strong>有停车场，车直接开上去</li>
+              <li>♿ <strong>台阶：</strong>无！走酒店主入口（boom gate）直达餐厅/泳池层，完全不用下台阶</li>
+              <li>🌊 <strong>景观：</strong>印度洋悬崖海景，无边泳池，视野开阔</li>
+              <li>🍽️ <strong>消费：</strong>低消约 IDR 100,000-150,000/人，有餐食和饮料</li>
+              <li>👶 <strong>带娃：</strong>适合！可以看海、拍照，小孩喜欢看泳池和大海</li>
+            </ul>
+          </div>
+        </details>
+        
+
+        <!-- Day 5: 海滩 -->
+        
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:10px;overflow:hidden;">
+          <summary>🏖️ Mengiat Beach（Nusa Dua） 海滩指南</summary>
+          <div style="padding:10px 14px;">
+            <ul style="padding-left:18px; font-size:0.9em;">
+              <li>📍 <strong>位置：</strong>Nusa Dua 区，靠近 Inaya Putri Bali 酒店</li>
+              <li>🏖️ <strong>特点：</strong>平坦沙滩（推车友好），海水平静（儿童安全），沙质好</li>
+              <li>💺 <strong>躺椅：</strong>当地 vendor 搭桌椅，约 IDR 100,000-150,000/2把椅子 + 遮阳伞（下午价）</li>
+              <li>🚿 <strong>淋浴：</strong>简单冲洗点有，但不如俱乐部干净，用海滩 café 方法更舒适</li>
+              <li>🍽️ <strong>海滩 café：</strong>就在沙滩边，可以点餐送到躺椅，午餐推荐这家</li>
+            </ul>
+          </div>
+        </details>
+        
+
+        <!-- Day 5: 为什么放弃 -->
+        
+        <div style="margin-top:16px; padding:12px 16px; background:#E8F5E9; border-radius:10px; border-left:4px solid #4CAF50;">
+          <strong style="color:#2E7D32;">✅ 为什么放弃 Melasti + Uluwatu 寺庙 + Kecak？</strong>
+          <ul style="margin-top:8px; padding-left:18px; font-size:0.88em;">
+            
+            <li style="margin-bottom:4px;">Melasti Beach：悬崖下海滩，需走几百级台阶，推车完全不行</li>
+            
+            <li style="margin-bottom:4px;">Uluwatu 寺庙：台阶多 + 猴子抢东西，3岁孩子不方便</li>
+            
+            <li style="margin-bottom:4px;">Kecak Fire Dance：大量 chanting + 火焰，3岁可能害怕</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- Day 6: SPA 列表（外嵌 spa-list.yaml 数据） -->
+        
+
+        <!-- Day 6: 早午餐餐厅 -->
+        
+
+        <!-- Day 6: SPA推荐组合 -->
+        
+
+        <!-- Day 3: Bird Park alternative -->
+        
+
+        <!-- Day 3/4/5 tips -->
+        
+
+        <!-- Day 7/8: notes -->
+        
+
+      </div><!-- /day-body -->
+    </div><!-- /day-block -->
+    
+    <div class="day-block" id="day6">
+      <div class="day-header">
+        <div class="day-number">6</div>
+        <div class="day-info">
+          <h3>DAY 6 · 4/30（周四）</h3>
+          <div class="day-date">Seminyak 休闲日：Villa + 按摩 + 餐饮探索</div>
+        </div>
+        <div class="day-tags">
+          
+          <span class="badge" style="background:rgba(255,255,255,0.2);color:white;">慢节奏</span>
+          
+          <span class="badge" style="background:#7B2FBE;color:white;">🟣 20:00 日语课</span>
+          
+        </div>
+      </div>
+
+      <div class="day-body">
+
+        
+        <div class="day-highlight">
+          <strong>📋 今日概要：</strong>Seminyak 周边休闲 + 按摩 SPA day！孩子主要在 Villa 玩水休息，大人安排按摩犒劳自己。
+        </div>
+        
+
+        
+        <div class="table-wrap schedule-table">
+          <table>
+            <thead>
+              <tr><th>时间</th><th>安排</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>上午</td>
+                <td>Villa 泳池 · 孩子玩水 · 大人休息</td>
+                <td>不赶，慢节奏</td>
+              </tr>
+              
+              <tr>
+                <td>11:00</td>
+                <td>出门早午餐（brunch）</td>
+                <td>推荐 Milk & Madu / Biku</td>
+              </tr>
+              
+              <tr>
+                <td>13:00</td>
+                <td>返回 Villa · 孩子午睡</td>
+                <td>大人趁机休息或预约按摩</td>
+              </tr>
+              
+              <tr>
+                <td>15:00–18:00</td>
+                <td>傍晚可选：Potato Head / 逛 Gang Telaga Waja 精品店</td>
+                <td>精力够就去，不够就在 villa 泡着</td>
+              </tr>
+              
+              <tr>
+                <td>傍晚上门</td>
+                <td>预约上门按摩（孩子醒着时）</td>
+                <td>Kembar Bali Spa 上门 / Bali Mobile Massage 24h</td>
+              </tr>
+              
+              <tr>
+                <td>20:00</td>
+                <td>🟣 日语课</td>
+                <td>Villa 内上课</td>
+              </tr>
+              
+              <tr>
+                <td>21:00 后</td>
+                <td>孩子睡后 · 大人出去做 SPA</td>
+                <td>步行 3 分钟到 Spa Alila / Hot Bamboo</td>
+              </tr>
+              
+              <tr>
+                <td>22:00</td>
+                <td>返回 Villa</td>
+                <td>全天结束</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        
+
+        <!-- Day 1: 商场列表 -->
+        
+
+        <!-- Day 2: Waterbom -->
+        
+
+        <!-- Day 3: 包车信息 -->
+        
+
+        <!-- Day 3: Ubud景点对比 -->
+        
+
+        <!-- Day 4: 交通 -->
+        
+
+        <!-- Day 4: Sanur海滩 -->
+        
+
+        <!-- Day 4: 海滩俱乐部 -->
+        
+
+        <!-- Day 5: 悬崖咖啡 -->
+        
+
+        <!-- Day 5: 海滩 -->
+        
+
+        <!-- Day 5: 为什么放弃 -->
+        
+
+        <!-- Day 6: SPA 列表（外嵌 spa-list.yaml 数据） -->
+        
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:18px;overflow:hidden;">
+          <summary style="padding:14px 16px;cursor:pointer;font-weight:600;background:#F0F4FF;user-select:none;font-size:0.95em;">
+            💆 Seminyak Villa 周边 SPA 清单（点击展开）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.88em;line-height:1.9;">
+            
+            <div style="margin-bottom:20px;">
+              <div style="font-size:1.05em;font-weight:700;color:var(--primary);margin-bottom:4px;">🚶 就在你家巷子里（0–3分钟）</div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#F0FFF4;border-radius:8px;border-left:3px solid #4CAF50;">
+                <div style="font-weight:600;">Kembar Bali Spa</div>
+                <div style="color:#666;">⭐ 5.0（35条） · 📍 Gg. Telaga Waja（你家巷子里） · ⏰ 至 21:00</div>
+                
+                <div style="color:#555;margin-top:4px;">上门服务 + 门店，专注上门按摩 · <a href="https://pranaspaseminyakbali.com" target="_blank" style="color:var(--primary);">pranaspaseminyakbali.com</a></div>
+                
+                
+              </div>
+              
+            </div>
+            
+            <div style="margin-bottom:20px;">
+              <div style="font-size:1.05em;font-weight:700;color:var(--primary);margin-bottom:4px;">🚶 步行 5–10 分钟</div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#FAFAFA;border-radius:8px;border-left:3px solid #ddd;">
+                <div style="font-weight:600;">Spa Alila Seminyak</div>
+                <div style="color:#666;">⭐ 5.0（665条） · 📍 Jl. Petitenget No.9（Alila 酒店内） · ⏰ 至 21:00</div>
+                
+                <div style="color:#555;margin-top:4px;">顶级品质 · <a href="https://Hyatt 官网预约" target="_blank" style="color:var(--primary);">Hyatt 官网预约</a></div>
+                
+                
+              </div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#FAFAFA;border-radius:8px;border-left:3px solid #ddd;">
+                <div style="font-weight:600;">Hot Bamboo Spa</div>
+                <div style="color:#666;">⭐ 4.9（1,345条） · 📍 Jl. Kunti I No.7B · ⏰ 至 22:00</div>
+                
+                <div style="color:#555;margin-top:4px;"> · <a href="https://www.hotbamboospa.com" target="_blank" style="color:var(--primary);">www.hotbamboospa.com</a></div>
+                
+                
+              </div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#FAFAFA;border-radius:8px;border-left:3px solid #ddd;">
+                <div style="font-weight:600;">BALI gift SPA</div>
+                <div style="color:#666;">⭐ 4.8（281条） · 📍 Jl. Lebak Sari 21 Petitenget · ⏰ 至 21:00</div>
+                
+                <div style="color:#555;margin-top:4px;"> · <a href="https://baligiftspa.com" target="_blank" style="color:var(--primary);">baligiftspa.com</a></div>
+                
+                
+              </div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#FAFAFA;border-radius:8px;border-left:3px solid #ddd;">
+                <div style="font-weight:600;">Essential Health Spa</div>
+                <div style="color:#666;">⭐ 4.8（769条） · 📍 Seminyak Square, Jl. Kayu Aya · ⏰ 至 22:00</div>
+                
+                <div style="color:#555;margin-top:4px;"> · <a href="https://essentialbodytreatments.com" target="_blank" style="color:var(--primary);">essentialbodytreatments.com</a></div>
+                
+                
+              </div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#FAFAFA;border-radius:8px;border-left:3px solid #ddd;">
+                <div style="font-weight:600;">Spa Bali Kayu Aya</div>
+                <div style="color:#666;">⭐ 4.7（86条） · 📍 Jl. Kayu Aya Oberoi No.77x · ⏰ 至 22:00</div>
+                
+                <div style="color:#555;margin-top:4px;"> · <a href="https://spabali.co.id" target="_blank" style="color:var(--primary);">spabali.co.id</a></div>
+                
+                
+              </div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#FAFAFA;border-radius:8px;border-left:3px solid #ddd;">
+                <div style="font-weight:600;">Lagoon Spa Seminyak</div>
+                <div style="color:#666;">⭐ 4.7（336条） · 📍 Villa Seminyak Estate, Jl. Nakula · ⏰ 至 20:00</div>
+                
+                <div style="color:#555;margin-top:4px;"> · <a href="https://www.lagoonspaseminyak.com" target="_blank" style="color:var(--primary);">www.lagoonspaseminyak.com</a></div>
+                
+                
+              </div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#FAFAFA;border-radius:8px;border-left:3px solid #ddd;">
+                <div style="font-weight:600;">Putri Ubud Spa</div>
+                <div style="color:#666;">⭐ 4.6（379条） · 📍 Jl. Kayu Jati · ⏰ 至 21:00</div>
+                
+                <div style="color:#555;margin-top:4px;"> · <a href="https://putribeautyspa.com" target="_blank" style="color:var(--primary);">putribeautyspa.com</a></div>
+                
+                
+              </div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#FAFAFA;border-radius:8px;border-left:3px solid #ddd;">
+                <div style="font-weight:600;">Spa Bali Drupadi</div>
+                <div style="color:#666;">⭐ 4.5（401条） · 📍 Jl. Drupadi No.1010 · ⏰ 至 22:00</div>
+                
+                <div style="color:#555;margin-top:4px;"> · <a href="https://drupadimassagebali.com" target="_blank" style="color:var(--primary);">drupadimassagebali.com</a></div>
+                
+                
+              </div>
+              
+            </div>
+            
+            <div style="margin-bottom:20px;">
+              <div style="font-size:1.05em;font-weight:700;color:var(--primary);margin-bottom:4px;">🏠 上门服务（预约到 Villa）</div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#FFF9F0;border-radius:8px;border-left:3px solid #FF9800;">
+                <div style="font-weight:600;">Kembar Bali Spa</div>
+                <div style="color:#666;">⭐ 5.0 · 上门服务 · 📍 你家巷子里 · ⏰ 至 21:00</div>
+                
+                
+              </div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#FFF9F0;border-radius:8px;border-left:3px solid #FF9800;">
+                <div style="font-weight:600;">Bali Mobile Massage</div>
+                <div style="color:#666;">⭐ 好评 · ⏰ 24小时</div>
+                
+                <div style="color:#555;margin-top:4px;">上门服务 · <a href="https://balimobilemassage.com" target="_blank" style="color:var(--primary);">balimobilemassage.com</a></div>
+                
+                
+              </div>
+              
+              <div style="margin:10px 0 10px 8px;padding:10px 14px;background:#FFF9F0;border-radius:8px;border-left:3px solid #FF9800;">
+                <div style="font-weight:600;">Sri Spa Bali</div>
+                <div style="color:#666;">⭐ 5.0（75条） · 📍 Basangkasa 区域 · ⏰ 上门服务</div>
+                
+                
+                <div style="color:#888;margin-top:4px;">（无独立官网，建议通过 WhatsApp 联系）</div>
+                
+              </div>
+              
+            </div>
+            
+          </div>
+        </details>
+        
+
+        <!-- Day 6: 早午餐餐厅 -->
+        
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:18px;overflow:hidden;">
+          <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#FFF8F0;user-select:none;font-size:0.9em;">
+            🍽️ 早午餐餐厅参考（点击展开）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.88em;line-height:1.9;">
+            
+            <div style="margin-bottom:12px;padding:10px 14px;background:#FFF9F0;border-radius:8px;border-left:3px solid #FF9800;">
+              <div style="font-weight:600;">Milk & Madu</div>
+              <div style="color:#666;">Jl. Pantai Berawa · <a href="https://milkandmadu.com" target="_blank" style="color:var(--primary);">https://milkandmadu.com</a></div>
+              <div style="color:#555;margin-top:2px;">亲子友好，brunch 风格，咖啡+轻食，适合带孩子</div>
+            </div>
+            
+            <div style="margin-bottom:12px;padding:10px 14px;background:#FFF9F0;border-radius:8px;border-left:3px solid #FF9800;">
+              <div style="font-weight:600;">Biku</div>
+              <div style="color:#666;">Jl. Petitenget No.888 · <a href="https://bikubali.com" target="_blank" style="color:var(--primary);">https://bikubali.com</a></div>
+              <div style="color:#555;margin-top:2px;">150年历史爪哇木屋 · 藏式料理+印尼菜 · 高颜值环境，孩子可以跑一跑</div>
+            </div>
+            
+          </div>
+        </details>
+        
+
+        <!-- Day 6: SPA推荐组合 -->
+        
+        <div style="margin-top:14px; padding:12px 16px; background:#E8F5E9; border-radius:10px; border-left:4px solid #4CAF50; font-size:0.88em;">
+          <strong style="color:#2E7D32;">💡 推荐组合：</strong>孩子醒着 → 预约 Kembar Bali Spa 上门（巷子里，超方便）；孩子睡后（21:00+）→ 步行 3 分钟去 Spa Alila（⭐5.0）或 Hot Bamboo（⭐4.9 · 1345条评价），做 90 分钟，回来也 3 分钟。
+        </div>
+        
+
+        <!-- Day 3: Bird Park alternative -->
+        
+
+        <!-- Day 3/4/5 tips -->
+        
+
+        <!-- Day 7/8: notes -->
+        
+
+      </div><!-- /day-body -->
+    </div><!-- /day-block -->
+    
+    <div class="day-block" id="day7">
+      <div class="day-header">
+        <div class="day-number">7</div>
+        <div class="day-info">
+          <h3>DAY 7 · 5/1（周五）</h3>
+          <div class="day-date">🏁 出发前夜 · 明天凌晨返程</div>
+        </div>
+        <div class="day-tags">
+          
+          <span class="badge" style="background:rgba(255,255,255,0.2);color:white;">出发前夜</span>
+          
+        </div>
+      </div>
+
+      <div class="day-body">
+
+        
+        <div class="day-highlight">
+          <strong>📋 今日概要：</strong>出发前最后一天，打包行李 + 退房 + 早点休息。明天（5月2日）凌晨 05:30 出发，08:40 航班飞广州。
+        </div>
+        
+
+        
+        <div class="table-wrap schedule-table">
+          <table>
+            <thead>
+              <tr><th>时间</th><th>安排</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>上午</td>
+                <td>别墅泳池 · 孩子玩水 · 大人休息</td>
+                <td>最后放松</td>
+              </tr>
+              
+              <tr>
+                <td>11:00</td>
+                <td>出门早午餐</td>
+                <td>Milk & Madu / Biku</td>
+              </tr>
+              
+              <tr>
+                <td>13:00</td>
+                <td>返回 Villa · 孩子午睡</td>
+                <td>大人趁机最后收拾行李</td>
+              </tr>
+              
+              <tr>
+                <td>15:00–18:00</td>
+                <td>傍晚可选：Potato Head / 逛精品店</td>
+                <td>行李可放前台，精力够再去逛一圈</td>
+              </tr>
+              
+              <tr>
+                <td>18:00</td>
+                <td>晚餐（提前吃）</td>
+                <td>早点吃完，21:00 前回到 Villa</td>
+              </tr>
+              
+              <tr>
+                <td>20:00–21:00</td>
+                <td>孩子洗漱 · 大人最后确认</td>
+                <td>确保行李全部打包，护照机票在包内</td>
+              </tr>
+              
+              <tr>
+                <td>21:30</td>
+                <td>确认行李 · 洗漱 · 准备睡觉</td>
+                <td>05:30 出发，22:00 前睡下，保证充足睡眠</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        
+
+        <!-- Day 1: 商场列表 -->
+        
+
+        <!-- Day 2: Waterbom -->
+        
+
+        <!-- Day 3: 包车信息 -->
+        
+
+        <!-- Day 3: Ubud景点对比 -->
+        
+
+        <!-- Day 4: 交通 -->
+        
+
+        <!-- Day 4: Sanur海滩 -->
+        
+
+        <!-- Day 4: 海滩俱乐部 -->
+        
+
+        <!-- Day 5: 悬崖咖啡 -->
+        
+
+        <!-- Day 5: 海滩 -->
+        
+
+        <!-- Day 5: 为什么放弃 -->
+        
+
+        <!-- Day 6: SPA 列表（外嵌 spa-list.yaml 数据） -->
+        
+
+        <!-- Day 6: 早午餐餐厅 -->
+        
+
+        <!-- Day 6: SPA推荐组合 -->
+        
+
+        <!-- Day 3: Bird Park alternative -->
+        
+
+        <!-- Day 3/4/5 tips -->
+        
+
+        <!-- Day 7/8: notes -->
+        
+          
+          <div style="margin-top:14px; padding:10px 14px; background:#FFF3E0; border-radius:8px; font-size:0.88em;">
+            ⚠️ <strong>明天（5月2日）凌晨出发！08:40 航班，05:30 从 Seminyak 出发，请今晚确认行李已打包好，22:00 前睡下。</strong>
+          </div>
+          
+        
+
+      </div><!-- /day-body -->
+    </div><!-- /day-block -->
+    
+    <div class="day-block" id="day8">
+      <div class="day-header">
+        <div class="day-number">8</div>
+        <div class="day-info">
+          <h3>DAY 8 · 5/2（周六）</h3>
+          <div class="day-date">返程日 · 峇厘岛→广州→北京</div>
+        </div>
+        <div class="day-tags">
+          
+          <span class="badge" style="background:var(--danger);color:white;">回家</span>
+          
+          <span class="badge" style="background:badge-warn;color:white;">⚠️ 日语课已请假</span>
+          
+        </div>
+      </div>
+
+      <div class="day-body">
+
+        
+        <div class="day-highlight">
+          <strong>📋 今日概要：</strong>凌晨出发去机场，经广州中转返回北京。飞行途中日语课已请假 ☑️
+        </div>
+        
+
+        
+        <div class="table-wrap schedule-table">
+          <table>
+            <thead>
+              <tr><th>时间</th><th>安排</th><th>备注</th></tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>05:00</td>
+                <td>起床 · 出发去 DPS 机场</td>
+                <td>提前约2.5小时到</td>
+              </tr>
+              
+              <tr>
+                <td>~07:00</td>
+                <td>抵达机场，办理值机</td>
+                <td>DPS Terminal I</td>
+              </tr>
+              
+              <tr>
+                <td>08:40</td>
+                <td>CZ8482 起飞 CAN → PKX</td>
+                <td>峇厘岛 DPS</td>
+              </tr>
+              
+              <tr>
+                <td>13:50</td>
+                <td>抵达广州白云 T2</td>
+                <td>取行李 → 重新办理托运</td>
+              </tr>
+              
+              <tr>
+                <td>16:00</td>
+                <td>CZ3115 起飞 CAN → PKX</td>
+                <td>广州白云 T2</td>
+              </tr>
+              
+              <tr>
+                <td>19:15</td>
+                <td>抵达北京大兴 T2</td>
+                <td>行程结束 🎉</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        
+
+        <!-- Day 1: 商场列表 -->
+        
+
+        <!-- Day 2: Waterbom -->
+        
+
+        <!-- Day 3: 包车信息 -->
+        
+
+        <!-- Day 3: Ubud景点对比 -->
+        
+
+        <!-- Day 4: 交通 -->
+        
+
+        <!-- Day 4: Sanur海滩 -->
+        
+
+        <!-- Day 4: 海滩俱乐部 -->
+        
+
+        <!-- Day 5: 悬崖咖啡 -->
+        
+
+        <!-- Day 5: 海滩 -->
+        
+
+        <!-- Day 5: 为什么放弃 -->
+        
+
+        <!-- Day 6: SPA 列表（外嵌 spa-list.yaml 数据） -->
+        
+
+        <!-- Day 6: 早午餐餐厅 -->
+        
+
+        <!-- Day 6: SPA推荐组合 -->
+        
+
+        <!-- Day 3: Bird Park alternative -->
+        
+
+        <!-- Day 3/4/5 tips -->
+        
+
+        <!-- Day 7/8: notes -->
+        
+          
+          <div style="margin-top:14px; padding:10px 14px; background:#FFF3E0; border-radius:8px; font-size:0.88em;">
+             <strong>DPS 机场相对较小，安检较快，但 08:40 的航班仍建议至少提前 2.5 小时到机场。路上预留堵车时间。</strong>
+          </div>
+          
+        
+
+      </div><!-- /day-body -->
+    </div><!-- /day-block -->
+    
+
+  </div><!-- /daily section -->
+
+  <!-- ===== ALTERNATIVE ITINERARY ===== -->
+  <div class="section" id="alternative">
+    <div class="section-title"><span class="emoji">🗺️</span> 备选行程参考</div>
+    <div class="card">
+      <div class="card-title">🌄 东北部一日游：天空之门 + Tirta Gangga 水宫</div>
+      <div class="day-highlight" style="margin-bottom:16px;">
+        <strong>路线：</strong>Seminyak → 天空之门（约2小时车程）→ Tirta Gangga（约30分钟）→ 午餐 → 回程（约2小时）<br>
+        <strong>特点：</strong>经典打卡线，拍照好看，Tirta Gangga 孩子可以下水玩鱼
+      </div>
+
+      <details style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
+        <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#F4F8FB;user-select:none;">
+          🚪 天空之门（Lempuyang Temple）
+        </summary>
+        <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+          <div style="margin-bottom:10px;">
+            <span class="badge badge-ok" style="margin-right:6px;">📸 拍照打卡</span>
+            <span class="badge badge-warn" style="margin-right:6px;">🐒 猴子多</span>
+            <span class="badge badge-info" style="margin-right:6px;">⏱️ 1-1.5小时</span>
+          </div>
+          <p><strong>位置：</strong>巴厘岛东部，Lempuyang 山上</p>
+          <p><strong>距离：</strong>Seminyak 开车约1.5-2小时</p>
+          <p><strong>门票：</strong>约 IDR 50,000/人</p>
+          <p><strong>亮点：</strong>善恶门框架着阿贡火山，照片感极强，是巴厘岛最经典的打卡点</p>
+          <div style="margin-top:10px;padding:10px 14px;background:#FFF3CD;border-radius:8px;font-size:0.88em;color:#856404;">
+            ⚠️ <strong>注意：</strong>2023年著名拍照装置已拆除重建，重建后镜头感可能不如以前；猴子会抢眼镜和手机，建议把眼镜挂在脖子上、拿好手机；台阶不多但抱着3岁娃还是有负担
+          </div>
+        </div>
+      </details>
+
+      <details style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
+        <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#F4F8FB;user-select:none;">
+          🐟 Tirta Gangga 皇家水宫
+        </summary>
+        <div style="padding:14px 16px;font-size:0.9em;line-height:1.8;">
+          <div style="margin-bottom:10px;">
+            <span class="badge badge-ok" style="margin-right:6px;">👶 亲子友好</span>
+            <span class="badge badge-ok" style="margin-right:6px;">🏛️ 皇室遗迹</span>
+            <span class="badge badge-info" style="margin-right:6px;">⏱️ 1-2小时</span>
+          </div>
+          <p><strong>位置：</strong>巴厘岛东部，阿贡火山山麓</p>
+          <p><strong>距离：</strong>天空之门开车约30分钟</p>
+          <p><strong>门票：</strong>约 IDR 30,000-50,000/人</p>
+          <p><strong>亮点：</strong>11层莲花喷泉、锦鲤池、热带花园；设有浅水区，<strong>孩子可以直接下水摸鱼玩水</strong></p>
+          <p><strong>幼儿友好度：</strong>✅ 3岁果子可以下水玩鱼；✅ 7岁点心可以爬上爬下探索</p>
+          <div style="margin-top:10px;padding:10px 14px;background:#E8F5E9;border-radius:8px;font-size:0.88em;color:#2E7D32;">
+            💡 <strong>为什么推荐这里：</strong>整个水宫步行15-30分钟就能逛完，孩子能下水互动（带替换衣服！），大人觉得好看，是少有的「孩子玩得开心 + 大人觉得值得去」的组合
+          </div>
+        </div>
+      </details>
+
+      <details style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+        <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#EFF6FF;user-select:none;">
+          📋 推荐行程安排（点击查看）
+        </summary>
+        <div style="padding:14px 16px;font-size:0.9em;line-height:1.9;">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>时间</th><th>安排</th><th>备注</th></tr></thead>
+              <tbody>
+                <tr><td>06:30</td><td>出发前往天空之门</td><td>车程约1.5-2小时，建议早出发避开人流</td></tr>
+                <tr><td>08:30</td><td>抵达天空之门</td><td>拍照打卡，1-1.5小时</td></tr>
+                <tr><td>10:00</td><td>前往 Tirta Gangga</td><td>车程约30分钟</td></tr>
+                <tr><td>10:30</td><td>抵达 Tirta Gangga</td><td>带孩子下水玩鱼，1.5-2小时</td></tr>
+                <tr><td>12:30</td><td>附近餐厅午餐</td><td>推荐水宫门口的本地餐厅</td></tr>
+                <tr><td>14:00</td><td>返程</td><td>车程约2小时</td></tr>
+                <tr><td>16:00</td><td>回到 Villa</td><td>傍晚休息，不耽误日语课</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="margin-top:12px;padding:10px 14px;background:#FFF9F0;border-radius:8px;font-size:0.88em;">
+            💡 <strong>黄金周提醒：</strong>4月30日-5月3日是印尼圣爆周（Easter Week），各景点游客较多，路上较堵。建议<strong>早上6:30前出发</strong>，能有效避开高峰
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===== TIPS ===== -->
+  <div class="section" id="tips">
+    <div class="section-title"><span class="emoji">🎒</span> 实用贴士</div>
+
+    <div class="card">
+      <div class="card-title">💱 货币 &amp; 汇率</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">💰</div>
+          <div class="info-text">
+            <div class="info-label">印尼盾（IDR）</div>
+            <div class="info-value">1 RMB ≈ 2150 IDR</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">💵</div>
+          <div class="info-text">
+            <div class="info-label">美元参考</div>
+            <div class="info-value">1 USD ≈ 15500 IDR</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">💳</div>
+          <div class="info-text">
+            <div class="info-label">支付方式</div>
+            <div class="info-value">现金 + Visa/Mastercard（多数地方可刷）</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🏧</div>
+          <div class="info-text">
+            <div class="info-label">ATM</div>
+            <div class="info-value">Seminyak 遍地都有，BCA 银行靠谱</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔌 插头 &amp; 电压</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">🔌</div>
+          <div class="info-text">
+            <div class="info-label">插座类型</div>
+            <div class="info-value">Type C / Type F（欧式两脚圆插）</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">⚡</div>
+          <div class="info-text">
+            <div class="info-label">电压</div>
+            <div class="info-value">230V / 50Hz（与国内接近）</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:10px; padding:8px 14px; background:#D1ECF1; border-radius:8px; font-size:0.88em; color:#0C5460;">
+        🛫 建议：带一个<strong>万能转换插头</strong>，多个 USB 接口那种最佳。
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">👶 带娃安全注意事项</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>事项</th><th>说明</th><th>建议</th></tr></thead>
+          <tbody>
+            <tr><td>🚫 猴子森林</td><td>不去。猴子有攻击性，3岁无法遵守安全规则</td><td><span class="badge badge-bad">已排除</span></td></tr>
+            <tr><td>✅ 折叠推车</td><td>Ubud 行程（梯田、瀑布）一定用得上</td><td><span class="badge badge-ok">✅ 要带</span></td></tr>
+            <tr><td>⚠️ 安全座椅</td><td>包车时确认是否有儿童座椅</td><td><span class="badge badge-info">待确认</span></td></tr>
+            <tr><td>✅ 旅游保险</td><td>有幼儿出行必备，覆盖医疗+意外</td><td><span class="badge badge-info">待购买</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📱 推荐 APP &amp; 工具</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">🗺️</div>
+          <div class="info-text">
+            <div class="info-label">Google Maps</div>
+            <div class="info-value">离线地图提前下载好 Bali 区域</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">💬</div>
+          <div class="info-text">
+            <div class="info-label">WhatsApp</div>
+            <div class="info-value">包车司机/酒店联系工具</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🎫</div>
+          <div class="info-text">
+            <div class="info-label">Klook / GetYourGuide</div>
+            <div class="info-value">提前买门票有折扣</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🏥</div>
+          <div class="info-text">
+            <div class="info-label">旅游保险</div>
+            <div class="info-value">出国必备（有娃强烈建议购买）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TODO ===== -->
+  <div class="section" id="todo">
+    <div class="section-title"><span class="emoji">✅</span> 待确认事项</div>
+    <div class="card">
+      <div class="todo-item">
+        <div class="todo-box"></div>
+        <span><strong>包车司机确认</strong>（Day 3 Ubud 一日游，是否含儿童安全座椅？）</span>
+      </div>
+      <div class="todo-item">
+        <div class="todo-box"></div>
+        <span><strong>旅游保险</strong>（出国必备，有娃强烈建议购买）</span>
+      </div>
+      <div class="todo-item">
+        <div class="todo-box"></div>
+        <span><strong>每日餐厅</strong>（提前做功课，列入计划）</span>
+      </div>
+      <div class="todo-item">
+        <div class="todo-box"></div>
+        <span><strong>打包清单</strong>（婴儿用品、药品、防晒、转换插头等）</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /wrapper -->
+
+<div class="footer">
+  <p>🇮🇩 巴厘岛行程 · 整理于 2026年4月12日</p>
+  <p style="margin-top:4px;">有问题随时问我 😄</p>
+</div>
+
+<script>
+  // Sticky nav active state
+  const sections = document.querySelectorAll('.day-block, .section');
+  const navLinks = document.querySelectorAll('.nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
