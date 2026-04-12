@@ -894,6 +894,109 @@
         </div>
         {% endif %}
 
+        <!-- Day 6: 海豚公园详情 -->
+        {% if day.dolphin_park %}
+        <details style="border:1px solid var(--border);border-radius:10px;margin-top:16px;overflow:hidden;">
+          <summary style="padding:12px 16px;cursor:pointer;font-weight:600;background:#E0F7FA;user-select:none;">
+            🐬 Bali Exotic Marine Park 详情（点击展开）
+          </summary>
+          <div style="padding:14px 16px;font-size:0.88em;line-height:1.9;">
+            <div style="margin-bottom:12px;">
+              <strong style="color:#006064;font-size:1.05em;">{{ day.dolphin_park.name }}</strong>
+              <div style="color:#666;font-size:0.85em;margin-top:2px;">{{ day.dolphin_park.rating }}</div>
+            </div>
+            <div class="info-grid" style="margin-bottom:14px;">
+              <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div class="info-text">
+                  <div class="info-label">地址</div>
+                  <div class="info-value">{{ day.dolphin_park.address }}</div>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">🕙</div>
+                <div class="info-text">
+                  <div class="info-label">营业时间</div>
+                  <div class="info-value">{{ day.dolphin_park.hours }}</div>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">⏱️</div>
+                <div class="info-text">
+                  <div class="info-label">建议游览时长</div>
+                  <div class="info-value">{{ day.dolphin_park.duration }}</div>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">📱</div>
+                <div class="info-text">
+                  <div class="info-label">电话/WhatsApp</div>
+                  <div class="info-value">{{ day.dolphin_park.phone }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-bottom:14px;">
+              <div style="font-weight:600;margin-bottom:8px;">🚗 交通（Seminyak → BEMP）</div>
+              <div style="background:#E0F7FA;border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:0.88em;">
+                📍 距离：{{ day.dolphin_park.location_from_seminyak }}
+              </div>
+              {% for t in day.dolphin_park.transport %}
+              <div style="margin-bottom:6px;padding-left:8px;">
+                <strong>{{ t.type }}</strong>：{{ t.cost }}{% if t.note %} · {{ t.note }}{% endif %}
+              </div>
+              {% endfor %}
+            </div>
+
+            <div style="margin-bottom:14px;">
+              <div style="font-weight:600;margin-bottom:8px;">🎟️ 互动项目票价</div>
+              <div class="table-wrap">
+                <table style="font-size:0.85em;">
+                  <thead><tr><th>项目</th><th>成人</th><th>儿童</th><th>包含</th><th>适合</th></tr></thead>
+                  <tbody>
+                    {% for p in day.dolphin_park.programs %}
+                    <tr>
+                      <td><strong>{{ p.name }}</strong></td>
+                      <td>{{ p.price_adult }}</td>
+                      <td>{{ p.price_child if p.price_child else '—' }}</td>
+                      <td>{{ p.includes }}</td>
+                      <td>{{ p.suitable }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div style="margin-bottom:14px;">
+              <div style="font-weight:600;margin-bottom:8px;">📋 购票渠道</div>
+              {% for b in day.dolphin_park.booking %}
+              <div style="margin-bottom:6px;padding-left:8px;">
+                <strong>{{ b.platform }}</strong>：<a href="{{ b.url }}" target="_blank" style="color:var(--primary);">{{ b.url }}</a>
+                {% if b.rating %} · {{ b.rating }}{% endif %}
+                {% if b.note %} · {{ b.note }}{% endif %}
+              </div>
+              {% endfor %}
+            </div>
+
+            <div style="background:#FFF9C4;border-radius:8px;padding:10px 14px;font-size:0.85em;color:#5D4037;">
+              <strong>👶 亲子注意事项：</strong>
+              <ul style="margin:6px 0 0 0;padding-left:16px;">
+                {% for note in day.dolphin_park.kid_friendly_notes %}
+                <li style="margin-bottom:3px;">{{ note }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            {% if day.dolphin_park.animal_welfare_note %}
+            <div style="margin-top:8px;font-size:0.82em;color:#888;">
+              ⚠️ {{ day.dolphin_park.animal_welfare_note }}
+            </div>
+            {% endif %}
+          </div>
+        </details>
+        {% endif %}
+
         <!-- Day 6: SPA 列表（外嵌 spa-list.yaml 数据） -->
         {% if day.id == 6 %}
         <details style="border:1px solid var(--border);border-radius:10px;margin-top:18px;overflow:hidden;">
