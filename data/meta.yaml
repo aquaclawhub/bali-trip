@@ -5,10 +5,10 @@ date_range: "2026年4月24日 — 5月2日"
 travelers:
   adults: 2
   children:
-    - name: "点心"
+    - name: "点"
       age: 7
       height_cm: 125
-    - name: "果子"
+    - name: "果"
       age: 3
       height_cm: 100  # 不到100cm，需推车
 

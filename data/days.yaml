@@ -127,7 +127,7 @@ days:
         color: "#1565C0"
         bg: "#E3F2FD"
         tasks:
-          - "主要负责带 7岁点心"
+          - "主要负责带 7岁点"
           - "可以一起玩所有身高达标的项目：Climax、Fast N Fierce、Pipeline 等"
           - "带头排队热门滑道，减少等待时间"
           - "有双人/多人滑道时配合拼玩"
@@ -135,13 +135,13 @@ days:
         color: "#AD1457"
         bg: "#FCE4EC"
         tasks:
-          - "主要负责带 3岁果子"
+          - "主要负责带 3岁果"
           - "陪同在儿童区（Kids Club / Crazy Canyon）玩水和滑梯"
           - "大人在旁边看护区陪玩，不走散"
           - "协调两人喝水、防晒、补觉等日常需求"
     # 身高与项目
     height_rules:
-      - name: "点心（7岁 125cm）"
+      - name: "点（7岁 125cm）"
         can_play:
           - "Python（100cm+）"
           - "Pipeline（100cm+）"
@@ -157,7 +157,7 @@ days:
           - "Lazy River（全身高）"
         cannot_play:
           - "FlowRider（130cm/140cm）"
-      - name: "果子（3岁 <100cm）"
+      - name: "果（3岁 <100cm）"
         can_play:
           - "Mini Boomerang（80cm起，大人陪同）"
           - "AquaPlay / Funtastic（儿童专属区，80cm起）"
