@@ -1,554 +1,545 @@
-# 每日行程数据
-
 days:
-
-  - id: 0
-    date: "4/24"
-    weekday: "周五"
-    label: "DAY 0"
-    subtitle: "抵达日 · 北京→广州→峇厘岛"
-    badges:
-      - text: "抵达"
-        style: "rgba(255,255,255,0.2)"
-    summary: "飞行日。下午从北京出发，经广州中转，夜间抵达巴厘岛，入住 Seminyak Villa。"
-    schedule:
-      - time: "13:30"
-        activity: "北京大兴机场办理登机（CZ3106）"
-      - time: "16:40"
-        activity: "抵达广州白云 T2"
-      - time: "18:30"
-        activity: "广州起飞（CZ625）"
-      - time: "23:40"
-        activity: "抵达巴厘岛 DPS 机场"
-      - time: "00:30"
-        activity: "办理入境 · 取行李"
-      - time: "~00:40"
-        activity: "司机接机，前往 Seminyak"
-      - time: "~01:20"
-        activity: "入住 Villa · 休息"
-    notes:
-      - text: "提前预约好包车司机，抵达当天夜间接机需要确认好司机联系方式（WhatsApp）。"
-        icon: "🚗"
-
-  - id: 1
-    date: "4/25"
-    weekday: "周六"
-    label: "DAY 1"
-    subtitle: "休息日 · 关键词：倒时差、适应、放松"
-    badges:
-      - text: "轻松"
-        style: "rgba(255,255,255,0.2)"
-      - text: "🟣 20:00 日语课"
-        style: "#7B2FBE"
-    summary: "经过一夜奔波，今天以恢复体力为主。不要安排密集行程，让身体适应时差。"
-    schedule:
-      - time: "上午"
-        activity: "睡到自然醒，在 Villa 休息"
-      - time: "下午"
-        activity: "Seminyak 海滩散步 · 熟悉周边环境"
-      - time: "15:00"
-        activity: "前往 Kuta 逛商场（选一个或多个）"
-      - time: "傍晚"
-        activity: "回 Seminyak · 别墅泳池放松"
-      - time: "晚餐"
-        activity: "Seminyak 区域餐厅（提前查好推荐）"
-      - time: "17:55–20:25"
-        activity: "🟣 日语直播课（在 Villa 上课）"
-        note: "DAY 1 全天轻松，可在 Villa 上课"
-    # 折叠块：商场
-    malls:
-      - name: "Discovery Mall Bali"
-        location: "Kuta · 海滩前"
-        rating: "⭐4.3"
-        rating_count: "2万+评价"
-        hours: "10:00 - 22:30"
-        distance: "Seminyak 开车约10-15分钟"
-        address: "Jl. Kartika Plaza, Kuta"
-        highlights: "海滨Mall，国际品牌，Chagee奶茶（海滩区首家），有露天广场和文化表演区"
-        suitable: "逛街+看海两不误，傍晚出来正好"
-        image: "https://images.unsplash.com/photo-1578864694484-4c2c4f3a5c44?w=700&q=80"
-      - name: "Beachwalk Shopping Center"
-        location: "Kuta · 海景"
-        rating: "⭐4.5（评分最高）"
-        rating_count: "4.7万评价"
-        hours: "10:00 - 23:00"
-        distance: "Seminyak 开车约10-15分钟"
-        address: "Jl. Pantai Kuta, Kuta"
-        highlights: "开放式绿色建筑设计，海景视野，国际品牌（H&M、Zara）、星巴克等，氛围好"
-        suitable: "大人逛街+拍照打卡，傍晚看日落绝佳"
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80"
-      - name: "Seminyak Village"
-        location: "Seminyak核心 · 最近 · 步行可达"
-        rating: "⭐4.1"
-        rating_count: "4500评价"
-        hours: "10:00 - 22:00"
-        distance: "步行/打车几分钟 ← 离Villa最近"
-        address: "Jl. Kayu Cendana No.8, Seminyak"
-        highlights: "两层现代商场，有空调，精品店+咖啡馆为主，躲正午太阳好去处"
-        suitable: "不想跑远、顺便逛逛的情况"
-        image: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf4?w=700&q=80"
-      - name: "Trans Studio Mall Bali"
-        location: "Sunset Road · 室内游乐园+影院 · 最适合带孩子"
-        rating: "⭐4.2"
-        hours: "10:00 - 22:00"
-        distance: "Seminyak 开车约15-20分钟"
-        address: "Jl. Sunset Road, Kuta"
-        highlights: "商场+室内主题乐园+电影院，国际品牌，餐饮丰富"
-        suitable: "带孩子来这里绝对不会错，有儿童游乐设施可以消耗精力"
-        image: "https://images.unsplash.com/photo-1562159247-0f9e1e3f4f2e?w=700&q=80"
-    notes:
-      - text: "Villa 第一天可以逛逛附近，找到最近的 7-11/便利店、餐厅、按摩店位置，熟悉环境。如果带娃累了，4个商场里 Trans Studio Mall 最适合孩子。"
-        icon: "💡"
-
-  - id: 2
-    date: "4/26"
-    weekday: "周日"
-    label: "DAY 2"
-    subtitle: "Waterbom Bali 水上乐园"
-    badges:
-      - text: "亲子必去"
-        style: "var(--accent)"
-    summary: "亚洲顶级水上乐园，有专门适合儿童的区域，7岁和3岁都能找到玩的。一整天安排。"
-    waterbom:
-      rating: "TripAdvisor 4.5+ · 亚洲顶级"
-      duration: "6-8 小时（一整天）"
-      address: "Jl. Kartika Plaza, Kuta（Discovery Mall隔壁）"
-      ticket_price: "约 200-300 RMB/人"
-      hours: "每天 09:00 - 18:00"
-      best_arrival: "早上9点前到达，先冲热门项目"
-      recommended_ticket: "官方四人套票（Four Pack Pass）"
-      recommended_price_idr: "2,600,000"
-      recommended_price_cny: "约¥1,200/4人"
-      recommended_includes: "家庭储物柜1个 + 毛巾4条 + 冰淇淋4份 + SPA20%折扣"
-      ticket_link: "https://www.waterbom-bali.com/ticket"
-    # 分工方案
-    roles:
-      - person: "爸爸"
-        color: "#1565C0"
-        bg: "#E3F2FD"
-        tasks:
-          - "主要负责带 7岁点"
-          - "可以一起玩所有身高达标的项目：Climax、Fast N Fierce、Pipeline 等"
-          - "带头排队热门滑道，减少等待时间"
-          - "有双人/多人滑道时配合拼玩"
-      - person: "妈妈"
-        color: "#AD1457"
-        bg: "#FCE4EC"
-        tasks:
-          - "主要负责带 3岁果"
-          - "陪同在儿童区（Kids Club / Crazy Canyon）玩水和滑梯"
-          - "大人在旁边看护区陪玩，不走散"
-          - "协调两人喝水、防晒、补觉等日常需求"
-    # 身高与项目
-    height_rules:
-      - name: "点（7岁 125cm）"
-        can_play:
-          - "Python（100cm+）"
-          - "Pipeline（100cm+）"
-          - "Green Vipers（100cm+）"
-          - "Twin Racers（110cm+）"
-          - "Climax（120cm+）"
-          - "Fast N Fierce（120cm+）"
-          - "Smashdown 2.0（122cm+）"
-          - "Boomerang（122cm+）"
-          - "The Drop（122cm+）"
-          - "Double Twist（122cm+）"
-          - "Constrictor（122cm+）"
-          - "Lazy River（全身高）"
-        cannot_play:
-          - "FlowRider（130cm/140cm）"
-      - name: "果（3岁 <100cm）"
-        can_play:
-          - "Mini Boomerang（80cm起，大人陪同）"
-          - "AquaPlay / Funtastic（儿童专属区，80cm起）"
-          - "Lazy River（漂流河，所有身高）"
-        cannot_play:
-          - "Python（100cm起）"
-          - "Pipeline（100cm起）"
-          - "Twin Racers（110cm起）"
-          - "Climax 及以上刺激项目"
-    tips:
-      - "带好防晒、泳衣、毛巾。园内可以租储物柜。早点出发（9点前）能避开高峰。水上乐园旁边就是 Kuta 海滩和购物中心。"
-
-  - id: 3
-    date: "4/27"
-    weekday: "周一"
-    label: "DAY 3"
-    subtitle: "Sanur 海滩 + Beach Club（轻松日）"
-    badges:
-      - text: "休闲"
-        style: "rgba(255,255,255,0.2)"
-    summary: "上午 Sanur 海滩玩沙踏浪 → 海滩 café 午餐冲淡换衣 → 下午 Villa 休息 SPA → 傍晚 Beach Club 看日落。Waterbom 第二天，轻松节奏。"
-    schedule:
-      - time: "08:00"
-        activity: "出发前往 Sanur"
-        note: "Bluebird/Grab，约30分钟车程"
-      - time: "08:30"
-        activity: "抵达 Sanur 海滩（Mertasari Beach）"
-        note: "公共海滩，免费入场"
-      - time: "08:30–12:00"
-        activity: "Sanur 海滩玩沙踏浪"
-        note: "东海岸浅滩，无浪，3岁可下海；带沙滩垫/泳衣"
-      - time: "12:00"
-        activity: "海滩 café 午餐 + 冲淡换衣"
-        note: "点餐后用 café 设施淡水冲脚换衣服"
-      - time: "13:30"
-        activity: "返回 Seminyak"
-        note: "约30分钟车程，孩子可在车上睡"
-      - time: "14:00–16:00"
-        activity: "Villa 午休 / 大人 SPA"
-        note: "Seminyak 按摩/SPA 选择极多，可提前预约"
-      - time: "16:30"
-        activity: "出发前往 La Plancha"
-        note: "步行可达，位置在 Seminyak 海滩"
-      - time: "17:00"
-        activity: "La Plancha 看日落"
-        note: "彩色懒人沙发，低消约 IDR 150,000–300,000/人"
-      - time: "19:00"
-        activity: "Seminyak 区域晚餐"
-        note: "推荐餐厅：Potato Head 系列 / Revolver / Biku"
+- id: 0
+  date: 4/24
+  weekday: 周五
+  label: DAY 0
+  subtitle: 抵达日 · 北京→广州→峇厘岛
+  badges:
+  - text: 抵达
+    style: rgba(255,255,255,0.2)
+  summary: 飞行日。下午从北京出发，经广州中转，夜间抵达巴厘岛，入住 Seminyak Villa。
+  schedule:
+  - time: '13:30'
+    activity: 北京大兴机场办理登机（CZ3106）
+  - time: '16:40'
+    activity: 抵达广州白云 T2
+  - time: '18:30'
+    activity: 广州起飞（CZ625）
+  - time: '23:40'
+    activity: 抵达巴厘岛 DPS 机场
+  - time: 00:30
+    activity: 办理入境 · 取行李
+  - time: ~00:40
+    activity: 司机接机，前往 Seminyak
+  - time: ~01:20
+    activity: 入住 Villa · 休息
+  notes:
+  - text: 提前预约好包车司机，抵达当天夜间接机需要确认好司机联系方式（WhatsApp）。
+    icon: 🚗
+- id: 1
+  date: 4/25
+  weekday: 周六
+  label: DAY 1
+  subtitle: 休息日 · 关键词：倒时差、适应、放松
+  badges:
+  - text: 轻松
+    style: rgba(255,255,255,0.2)
+  - text: 🟣 20:00 日语课
+    style: '#7B2FBE'
+  summary: 经过一夜奔波，今天以恢复体力为主。不要安排密集行程，让身体适应时差。
+  schedule:
+  - time: 上午
+    activity: 睡到自然醒，在 Villa 休息
+  - time: 下午
+    activity: Seminyak 海滩散步 · 熟悉周边环境
+  - time: '15:00'
+    activity: 前往 Kuta 逛商场（选一个或多个）
+  - time: 傍晚
+    activity: 回 Seminyak · 别墅泳池放松
+  - time: 晚餐
+    activity: Seminyak 区域餐厅（提前查好推荐）
+  - time: 17:55–20:25
+    activity: 🟣 日语直播课（在 Villa 上课）
+    note: DAY 1 全天轻松，可在 Villa 上课
+  malls:
+  - name: Discovery Mall Bali
+    location: Kuta · 海滩前
+    rating: ⭐4.3
+    rating_count: 2万+评价
+    hours: 10:00 - 22:30
+    distance: Seminyak 开车约10-15分钟
+    address: Jl. Kartika Plaza, Kuta
+    highlights: 海滨Mall，国际品牌，Chagee奶茶（海滩区首家），有露天广场和文化表演区
+    suitable: 逛街+看海两不误，傍晚出来正好
+    image: https://aquaclawhub.github.io/bali-trip/assets/images/beachwalk.jpg
+  - name: Beachwalk Shopping Center
+    location: Kuta · 海景
+    rating: ⭐4.5（评分最高）
+    rating_count: 4.7万评价
+    hours: 10:00 - 23:00
+    distance: Seminyak 开车约10-15分钟
+    address: Jl. Pantai Kuta, Kuta
+    highlights: 开放式绿色建筑设计，海景视野，国际品牌（H&M、Zara）、星巴克等，氛围好
+    suitable: 大人逛街+拍照打卡，傍晚看日落绝佳
+    image: https://aquaclawhub.github.io/bali-trip/assets/images/beachwalk.jpg
+  - name: Seminyak Village
+    location: Seminyak核心 · 最近 · 步行可达
+    rating: ⭐4.1
+    rating_count: 4500评价
+    hours: 10:00 - 22:00
+    distance: 步行/打车几分钟 ← 离Villa最近
+    address: Jl. Kayu Cendana No.8, Seminyak
+    highlights: 两层现代商场，有空调，精品店+咖啡馆为主，躲正午太阳好去处
+    suitable: 不想跑远、顺便逛逛的情况
+    image: https://aquaclawhub.github.io/bali-trip/assets/images/seminyak-beach.jpg
+  - name: Trans Studio Mall Bali
+    location: Sunset Road · 室内游乐园+影院 · 最适合带孩子
+    rating: ⭐4.2
+    hours: 10:00 - 22:00
+    distance: Seminyak 开车约15-20分钟
+    address: Jl. Sunset Road, Kuta
+    highlights: 商场+室内主题乐园+电影院，国际品牌，餐饮丰富
+    suitable: 带孩子来这里绝对不会错，有儿童游乐设施可以消耗精力
+    image: https://aquaclawhub.github.io/bali-trip/assets/images/trans-studio-mall.jpg
+  notes:
+  - text: Villa 第一天可以逛逛附近，找到最近的 7-11/便利店、餐厅、按摩店位置，熟悉环境。如果带娃累了，4个商场里 Trans Studio Mall 最适合孩子。
+    icon: 💡
+- id: 2
+  date: 4/26
+  weekday: 周日
+  label: DAY 2
+  subtitle: Waterbom Bali 水上乐园
+  badges:
+  - text: 亲子必去
+    style: var(--accent)
+  summary: 亚洲顶级水上乐园，有专门适合儿童的区域，7岁和3岁都能找到玩的。一整天安排。
+  waterbom:
+    rating: TripAdvisor 4.5+ · 亚洲顶级
+    duration: 6-8 小时（一整天）
+    address: Jl. Kartika Plaza, Kuta（Discovery Mall隔壁）
+    ticket_price: 约 200-300 RMB/人
+    hours: 每天 09:00 - 18:00
+    best_arrival: 早上9点前到达，先冲热门项目
+    recommended_ticket: 官方四人套票（Four Pack Pass）
+    recommended_price_idr: 2,600,000
+    recommended_price_cny: 约¥1,200/4人
+    recommended_includes: 家庭储物柜1个 + 毛巾4条 + 冰淇淋4份 + SPA20%折扣
+    ticket_link: https://www.waterbom-bali.com/ticket
+  roles:
+  - person: 爸爸
+    color: '#1565C0'
+    bg: '#E3F2FD'
+    tasks:
+    - 主要负责带 7岁点
+    - 可以一起玩所有身高达标的项目：Climax、Fast N Fierce、Pipeline 等
+    - 带头排队热门滑道，减少等待时间
+    - 有双人/多人滑道时配合拼玩
+  - person: 妈妈
+    color: '#AD1457'
+    bg: '#FCE4EC'
+    tasks:
+    - 主要负责带 3岁果
+    - 陪同在儿童区（Kids Club / Crazy Canyon）玩水和滑梯
+    - 大人在旁边看护区陪玩，不走散
+    - 协调两人喝水、防晒、补觉等日常需求
+  height_rules:
+  - name: 点（7岁 125cm）
+    can_play:
+    - Python（100cm+）
+    - Pipeline（100cm+）
+    - Green Vipers（100cm+）
+    - Twin Racers（110cm+）
+    - Climax（120cm+）
+    - Fast N Fierce（120cm+）
+    - Smashdown 2.0（122cm+）
+    - Boomerang（122cm+）
+    - The Drop（122cm+）
+    - Double Twist（122cm+）
+    - Constrictor（122cm+）
+    - Lazy River（全身高）
+    cannot_play:
+    - FlowRider（130cm/140cm）
+  - name: 果（3岁 <100cm）
+    can_play:
+    - Mini Boomerang（80cm起，大人陪同）
+    - AquaPlay / Funtastic（儿童专属区，80cm起）
+    - Lazy River（漂流河，所有身高）
+    cannot_play:
+    - Python（100cm起）
+    - Pipeline（100cm起）
+    - Twin Racers（110cm起）
+    - Climax 及以上刺激项目
+  tips:
+  - 带好防晒、泳衣、毛巾。园内可以租储物柜。早点出发（9点前）能避开高峰。水上乐园旁边就是 Kuta 海滩和购物中心。
+  attraction_image: https://aquaclawhub.github.io/bali-trip/assets/images/waterbom-bali.jpg
+- id: 3
+  date: 4/27
+  weekday: 周一
+  label: DAY 3
+  subtitle: Sanur 海滩 + Beach Club（轻松日）
+  badges:
+  - text: 休闲
+    style: rgba(255,255,255,0.2)
+  summary: 上午 Sanur 海滩玩沙踏浪 → 海滩 café 午餐冲淡换衣 → 下午 Villa 休息 SPA → 傍晚 Beach Club 看日落。Waterbom 第二天，轻松节奏。
+  schedule:
+  - time: 08:00
+    activity: 出发前往 Sanur
+    note: Bluebird/Grab，约30分钟车程
+  - time: 08:30
+    activity: 抵达 Sanur 海滩（Mertasari Beach）
+    note: 公共海滩，免费入场
+  - time: 08:30–12:00
+    activity: Sanur 海滩玩沙踏浪
+    note: 东海岸浅滩，无浪，3岁可下海；带沙滩垫/泳衣
+  - time: '12:00'
+    activity: 海滩 café 午餐 + 冲淡换衣
+    note: 点餐后用 café 设施淡水冲脚换衣服
+  - time: '13:30'
+    activity: 返回 Seminyak
+    note: 约30分钟车程，孩子可在车上睡
+  - time: 14:00–16:00
+    activity: Villa 午休 / 大人 SPA
+    note: Seminyak 按摩/SPA 选择极多，可提前预约
+  - time: '16:30'
+    activity: 出发前往 La Plancha
+    note: 步行可达，位置在 Seminyak 海滩
+  - time: '17:00'
+    activity: La Plancha 看日落
+    note: 彩色懒人沙发，低消约 IDR 150,000–300,000/人
+  - time: '19:00'
+    activity: Seminyak 区域晚餐
+    note: 推荐餐厅：Potato Head 系列 / Revolver / Biku
+  transport:
+    method: Bluebird 出租车 / Grab / GoCar
+    duration: 约 25–35 分钟（取决于路况）
+    cost: 约 IDR 80,000–150,000（≈ ¥40–75）
+    tip: 如果当天司机服务满意，可以直接问他是否愿意 Day 4（Ubud 日）也跟车，包一天比单次叫车划算，且有空调车随时等候，孩子玩累了随时上车休息。
+  sanur_beach:
+    name: Mertasari Beach
+    description: Sanur 最适合亲子下海的海滩，东海岸有珊瑚礁保护，海水平静、浪小，3岁孩子可以安全踏浪。
+    facilities:
+    - 公共淋浴室：有冷水冲洗，设施较基础（无热水），通常免费或收少量费用
+    - 更衣区：较简陋，建议在海滩 café 里换好衣服过来
+    - 最推荐：找一家海滩 café 坐下，点杯饮料/吃个午饭，用他们的卫生间和冲洗设施，比公共淋浴室舒服很多
+    bring: 大沙滩巾 / 浴巾、泳衣 + 备用换洗衣物、沙滩玩具（如想玩沙）、防晒霜、帽子
+  beachclub:
+    name: La Plancha
+    address: Jl. Arjuna, Seminyak（步行可达 Seminyak 各 villa 区域）
+    entry: 免费，但必须消费
+    min_spend: 约 IDR 150,000–300,000/人（≈ ¥75–150/人）
+    feature: 彩色懒人沙发 + 直接沙滩 + 著名日落景观，超适合拍照
+    kids: 可以带娃，主要是大人的放松环境
+    best_time: 建议 16:30 前到，傍晚是黄金时段
+  tips:
+  - text: 如果孩子上午玩累了，下午 SPA 可以跳过，直接回 Villa 休息。La Plancha 傍晚场次即使 17:00 到也有足够时间看日落，不用赶。
+    icon: 💡
+  attraction_image: https://aquaclawhub.github.io/bali-trip/assets/images/sanur-beach.jpg
+- id: 4
+  date: 4/28
+  weekday: 周二
+  label: DAY 4
+  subtitle: Ubud 一日游 ⭐ 今日重点
+  badges:
+  - text: ⭐ 核心日
+    style: var(--accent)
+  summary: 上午包车顺路打卡梯田+瀑布（拍照打卡不停留太久）→ Ubud 镇午餐 → 下午专注玩 Bali Zoo。
+  schedule:
+  - time: 08:00
+    activity: 出发前往德格拉朗梯田
+    note: 包车，车程约40分钟
+  - time: 08:45
+    activity: 德格拉朗梯田（Tegallalang）
+    note: 📸 拍照打卡，30-45分钟，不深度逛
+  - time: 09:30
+    activity: 路观德哥拉朗瀑布
+    note: 车程20分钟，📸 拍个照不停留太久
+  - time: '10:00'
+    activity: 前往 Ubud 镇
+    note: 车程约30分钟
+  - time: '10:30'
+    activity: Ubud 镇中心：找地方吃午餐
+    note: 脏鸭餐/Café Lotus；让小孩休息
+  - time: '12:00'
+    activity: 出发前往 Bali Zoo
+    note: 车程约25分钟
+  - time: '12:30'
+    activity: 抵达 Bali Zoo ⭐
+    note: 16:00最后入场，17:00关门
+  - time: 12:30–17:00
+    activity: Bali Zoo 自由游玩
+    note: 约4.5小时，大象泥/猩猩早餐需提前预约
+  - time: '17:00'
+    activity: Bali Zoo 关门，出发返回 Seminyak
+    note: 约1小时车程，孩子车上睡
+  - time: '18:00'
+    activity: 回到 Villa
+    note: 周二无日语课，轻松收工
+  - time: '19:00'
+    activity: Seminyak 区域晚餐
+    note: 推荐：Potato Head 系列 / Revolver / Biku
+  car_rental:
+    platform: Klook
+    link: https://www.klook.com/zh-CN/activity/800-private-car-charter-bali/
+    rating: ⭐4.6 · 27K评价 · 200K+人参加过
+    recommended: 4人 · 10小时 · 中文司机
+    price: 约¥280–430
+    car_type: 1-5人团 5座MPV · Toyota Avanza/Ertiga
+    includes: 司机 + 油费 + 空调车 + 停车费 + 过路费
+    extra_cash:
+    - 超时费：约 IDR 50,000/小时（≈¥25）
+    - 司机餐费：超时6小时以上通常需请司机吃饭，无固定金额
+    - 凌晨接载（0:00–6:00）：加约 IDR 250,000（≈¥125）
+    insurance: 包车交通意外险为印尼强制险，已含在车费中。如需行程取消/意外医疗保障，可加购 Klook 活动险（约¥20–50/人），或使用已有旅行险/信用卡险覆盖。
+    area: 全部在 Klook 区域1（Area 1）范围内，无额外附加费
+  ubud_attractions:
+  - name: 德格拉朗梯田
+    rating: ⭐ 4.4
+    ticket: 1.5万 IDR
+    kid_3yo: 推车勉强
+    kid_7yo: ✅ 可以
+    note: 田埂窄，需看好幼儿；建议早上去
+  - name: 德哥拉朗瀑布
+    rating: ⭐ 4.3
+    ticket: 1.5万 IDR
+    kid_3yo: 要走台阶
+    kid_7yo: ✅ 可以
+    note: 约15分钟台阶路；有卖水果/饮料的地方，瀑布底可玩水
+  - name: Campuhan Ridge Walk
+    rating: ⭐ 4.3
+    ticket: 免费
+    kid_3yo: ❌ 不推荐
+    kid_7yo: ✅ 可以
+    note: 入口有台阶，非推车友好；全程无遮挡，注意防晒
+  - name: Ubud Palace
+    rating: ⭐ 4.2
+    ticket: 免费
+    kid_3yo: ✅ 可以
+    kid_7yo: ✅ 可以
+    note: 10分钟逛完，镇中心，顺便看建筑风格
+  - name: Ubud Art Market
+    rating: ⭐ 3.8
+    ticket: —
+    kid_3yo: ✅ 可以
+    kid_7yo: ✅ 可以
+    note: 可砍价（从标价1/3开始还）；注意质量
+  tips:
+  - text: 如果小孩上午累了想多休息，可以晚点出发，把梯田/瀑布压缩或跳过，直接去 Zoo。Zoo 下午场3-5小时足够玩好，不用赶。
+    icon: 💡
+  attraction_image: https://aquaclawhub.github.io/bali-trip/assets/images/tegallalang.jpg
+- id: 5
+  date: 4/29
+  weekday: 周三
+  label: DAY 5
+  subtitle: 南 Bali 环线：Uluwatu 悬崖咖啡 ☕ + Nusa Dua 海滩 🏖️
+  badges:
+  - text: ⭐ 今日重点
+    style: badge-ok
+  summary: 包车走南部环线——悬崖咖啡厅看海 → Nusa Dua 海滩躺椅休息。带娃轻松，全程不用下悬崖台阶。
+  schedule:
+  - time: 09:00
+    activity: 出发前往 Uluwatu
+  - time: '10:00'
+    activity: ☕ Mana Uluwatu 悬崖咖啡——车直达停车场，不用走台阶，抱娃看海，轻松拍照
+  - time: '11:30'
+    activity: 开车前往 Nusa Dua（顺路风景）
+  - time: '12:00'
+    activity: 🏖️ Mengiat Beach（Nusa Dua）——海滩边午餐，租2个躺椅（当地 vendor，约 IDR 100-150k）
+  - time: 12:00–15:00
+    activity: 孩子玩沙玩水，大人晒太阳 / 休息
+  - time: '15:00'
+    activity: 下午茶 / 休息
+  - time: '16:00'
+    activity: 返回 Seminyak
+  why_not:
+  - reason: Melasti Beach：悬崖下海滩，需走几百级台阶，推车完全不行
+  - reason: Uluwatu 寺庙：台阶多 + 猴子抢东西，3岁孩子不方便
+  - reason: Kecak Fire Dance：大量 chanting + 火焰，3岁可能害怕
+  cafe:
+    name: Mana Uluwatu
+    location: Uluwatu Surf Villas 内，悬崖顶上
+    parking: 有停车场，车直接开上去
+    steps: 无！走酒店主入口（boom gate）直达餐厅/泳池层，完全不用下台阶
+    view: 印度洋悬崖海景，无边泳池，视野开阔
+    spend: 低消约 IDR 100,000-150,000/人，有餐食和饮料
+    kids: 适合！可以看海、拍照，小孩喜欢看泳池和大海
+  beach:
+    name: Mengiat Beach（Nusa Dua）
+    location: Nusa Dua 区，靠近 Inaya Putri Bali 酒店
+    features: 平坦沙滩（推车友好），海水平静（儿童安全），沙质好
+    loungers: 当地 vendor 搭桌椅，约 IDR 100,000-150,000/2把椅子 + 遮阳伞（下午价）
+    shower: 简单冲洗点有，但不如俱乐部干净，用海滩 café 方法更舒适
+    cafe: 就在沙滩边，可以点餐送到躺椅，午餐推荐这家
+  attraction_image: https://aquaclawhub.github.io/bali-trip/assets/images/mana-uluwatu.jpg
+- id: 6
+  date: 4/30
+  weekday: 周四
+  label: DAY 6
+  subtitle: 上午海豚互动 + 下午 Villa 休闲 SPA
+  badges:
+  - text: 🟣 20:00 日语课
+    style: '#7B2FBE'
+  - text: 🐬 新安排
+    style: rgba(255,255,255,0.2)
+  summary: 上午 Bali Exotic Marine Park 与海豚互动，下午回 Villa 休息按摩，节奏轻松不赶。
+  schedule:
+  - time: 上午
+    activity: Villa 泳池 · 孩子玩水 · 大人整理出门
+    note: 不赶，慢节奏
+  - time: '10:00'
+    activity: GrabCar 出发前往 Bali Exotic Marine Park
+    note: 车程约 24 分钟
+  - time: '10:30'
+    activity: 🐬 抵达 · 参加 Explorer Program
+    note: 浅水区互动，3岁果适合，1名大人陪同入场
+  - time: 10:30–13:00
+    activity: 海豚互动体验
+    note: 约 2.5 小时，含拍照、喂食、浅水接触
+  - time: '13:00'
+    activity: GrabCar 返回 Seminyak
+    note: 车程约 24 分钟，IDR 70,000–120,000
+  - time: 13:30–14:30
+    activity: 午餐（Seminyak）
+    note: 推荐 Milk & Madu / Biku（提前约好，错峰不排队）
+  - time: 15:00–17:00
+    activity: 返回 Villa · 孩子午睡 · 大人按摩
+    note: Kembar Bali Spa 上门（巷子里，超方便）
+  - time: 17:00–18:00
+    activity: 孩子醒后 · Villa 玩水 / 大人休息
+    note: ''
+  - time: 18:00–20:00
+    activity: 傍晚 Villa 内休息 or 出门逛 Gang Telaga Waja 精品店
+    note: 精力够就去，不够就在 villa 泡着
+  - time: '20:00'
+    activity: 🟣 日语课（Villa 内）
+    note: ''
+  - time: 21:00 后
+    activity: 孩子睡后 · 大人出去做 SPA
+    note: 步行 3 分钟到 Spa Alila（⭐5.0）或 Hot Bamboo（⭐4.9）
+  - time: '22:00'
+    activity: 返回 Villa · 休息
+    note: 全天结束
+  restaurants:
+  - name: Milk & Madu
+    address: Jl. Pantai Berawa
+    link: https://milkandmadu.com
+    description: 亲子友好，brunch 风格，咖啡+轻食，适合带孩子
+  - name: Biku
+    address: Jl. Petitenget No.888
+    link: https://bikubali.com
+    description: 150年历史爪哇木屋 · 藏式料理+印尼菜 · 高颜值环境，孩子可以跑一跑
+  dolphin_park:
+    name: Bali Exotic Marine Park (BEMP)
+    rating: Google 4.5（1,176条）/ KKday 4.9 / Trip.com 4.5
+    address: Jl. Bali Eksotik No.8, Pedungan, Denpasar Selatan, Bali 80222
+    phone: +62 853-3883-3678
+    website: https://balidolphinmarinepark.com
+    hours: 10:30 – 18:00（最后入场 17:00）
+    duration: 建议 2–3 小时
+    location_from_seminyak: 约 9.2 公里，车程 24 分钟（经 Jl. Bypass Ngurah Rai）
     transport:
-      method: "Bluebird 出租车 / Grab / GoCar"
-      duration: "约 25–35 分钟（取决于路况）"
-      cost: "约 IDR 80,000–150,000（≈ ¥40–75）"
-      tip: "如果当天司机服务满意，可以直接问他是否愿意 Day 4（Ubud 日）也跟车，包一天比单次叫车划算，且有空调车随时等候，孩子玩累了随时上车休息。"
-    sanur_beach:
-      name: "Mertasari Beach"
-      description: "Sanur 最适合亲子下海的海滩，东海岸有珊瑚礁保护，海水平静、浪小，3岁孩子可以安全踏浪。"
-      facilities:
-        - "公共淋浴室：有冷水冲洗，设施较基础（无热水），通常免费或收少量费用"
-        - "更衣区：较简陋，建议在海滩 café 里换好衣服过来"
-        - "最推荐：找一家海滩 café 坐下，点杯饮料/吃个午饭，用他们的卫生间和冲洗设施，比公共淋浴室舒服很多"
-      bring: "大沙滩巾 / 浴巾、泳衣 + 备用换洗衣物、沙滩玩具（如想玩沙）、防晒霜、帽子"
-    beachclub:
-      name: "La Plancha"
-      address: "Jl. Arjuna, Seminyak（步行可达 Seminyak 各 villa 区域）"
-      entry: "免费，但必须消费"
-      min_spend: "约 IDR 150,000–300,000/人（≈ ¥75–150/人）"
-      feature: "彩色懒人沙发 + 直接沙滩 + 著名日落景观，超适合拍照"
-      kids: "可以带娃，主要是大人的放松环境"
-      best_time: "建议 16:30 前到，傍晚是黄金时段"
-    tips:
-      - text: "如果孩子上午玩累了，下午 SPA 可以跳过，直接回 Villa 休息。La Plancha 傍晚场次即使 17:00 到也有足够时间看日落，不用赶。"
-        icon: "💡"
-
-  - id: 4
-    date: "4/28"
-    weekday: "周二"
-    label: "DAY 4"
-    subtitle: "Ubud 一日游 ⭐ 今日重点"
-    badges:
-      - text: "⭐ 核心日"
-        style: "var(--accent)"
-    summary: "上午包车顺路打卡梯田+瀑布（拍照打卡不停留太久）→ Ubud 镇午餐 → 下午专注玩 Bali Zoo。"
-    schedule:
-      - time: "08:00"
-        activity: "出发前往德格拉朗梯田"
-        note: "包车，车程约40分钟"
-      - time: "08:45"
-        activity: "德格拉朗梯田（Tegallalang）"
-        note: "📸 拍照打卡，30-45分钟，不深度逛"
-      - time: "09:30"
-        activity: "路观德哥拉朗瀑布"
-        note: "车程20分钟，📸 拍个照不停留太久"
-      - time: "10:00"
-        activity: "前往 Ubud 镇"
-        note: "车程约30分钟"
-      - time: "10:30"
-        activity: "Ubud 镇中心：找地方吃午餐"
-        note: "脏鸭餐/Café Lotus；让小孩休息"
-      - time: "12:00"
-        activity: "出发前往 Bali Zoo"
-        note: "车程约25分钟"
-      - time: "12:30"
-        activity: "抵达 Bali Zoo ⭐"
-        note: "16:00最后入场，17:00关门"
-      - time: "12:30–17:00"
-        activity: "Bali Zoo 自由游玩"
-        note: "约4.5小时，大象泥/猩猩早餐需提前预约"
-      - time: "17:00"
-        activity: "Bali Zoo 关门，出发返回 Seminyak"
-        note: "约1小时车程，孩子车上睡"
-      - time: "18:00"
-        activity: "回到 Villa"
-        note: "周二无日语课，轻松收工"
-      - time: "19:00"
-        activity: "Seminyak 区域晚餐"
-        note: "推荐：Potato Head 系列 / Revolver / Biku"
-    car_rental:
-      platform: "Klook"
-      link: "https://www.klook.com/zh-CN/activity/800-private-car-charter-bali/"
-      rating: "⭐4.6 · 27K评价 · 200K+人参加过"
-      recommended: "4人 · 10小时 · 中文司机"
-      price: "约¥280–430"
-      car_type: "1-5人团 5座MPV · Toyota Avanza/Ertiga"
-      includes: "司机 + 油费 + 空调车 + 停车费 + 过路费"
-      extra_cash:
-        - "超时费：约 IDR 50,000/小时（≈¥25）"
-        - "司机餐费：超时6小时以上通常需请司机吃饭，无固定金额"
-        - "凌晨接载（0:00–6:00）：加约 IDR 250,000（≈¥125）"
-      insurance: "包车交通意外险为印尼强制险，已含在车费中。如需行程取消/意外医疗保障，可加购 Klook 活动险（约¥20–50/人），或使用已有旅行险/信用卡险覆盖。"
-      area: "全部在 Klook 区域1（Area 1）范围内，无额外附加费"
-    ubud_attractions:
-      - name: "德格拉朗梯田"
-        rating: "⭐ 4.4"
-        ticket: "1.5万 IDR"
-        kid_3yo: "推车勉强"
-        kid_7yo: "✅ 可以"
-        note: "田埂窄，需看好幼儿；建议早上去"
-      - name: "德哥拉朗瀑布"
-        rating: "⭐ 4.3"
-        ticket: "1.5万 IDR"
-        kid_3yo: "要走台阶"
-        kid_7yo: "✅ 可以"
-        note: "约15分钟台阶路；有卖水果/饮料的地方，瀑布底可玩水"
-      - name: "Campuhan Ridge Walk"
-        rating: "⭐ 4.3"
-        ticket: "免费"
-        kid_3yo: "❌ 不推荐"
-        kid_7yo: "✅ 可以"
-        note: "入口有台阶，非推车友好；全程无遮挡，注意防晒"
-      - name: "Ubud Palace"
-        rating: "⭐ 4.2"
-        ticket: "免费"
-        kid_3yo: "✅ 可以"
-        kid_7yo: "✅ 可以"
-        note: "10分钟逛完，镇中心，顺便看建筑风格"
-      - name: "Ubud Art Market"
-        rating: "⭐ 3.8"
-        ticket: "—"
-        kid_3yo: "✅ 可以"
-        kid_7yo: "✅ 可以"
-        note: "可砍价（从标价1/3开始还）；注意质量"
-    tips:
-      - text: "如果小孩上午累了想多休息，可以晚点出发，把梯田/瀑布压缩或跳过，直接去 Zoo。Zoo 下午场3-5小时足够玩好，不用赶。"
-        icon: "💡"
-
-  - id: 5
-    date: "4/29"
-    weekday: "周三"
-    label: "DAY 5"
-    subtitle: "南 Bali 环线：Uluwatu 悬崖咖啡 ☕ + Nusa Dua 海滩 🏖️"
-    badges:
-      - text: "⭐ 今日重点"
-        style: "badge-ok"
-    summary: "包车走南部环线——悬崖咖啡厅看海 → Nusa Dua 海滩躺椅休息。带娃轻松，全程不用下悬崖台阶。"
-    schedule:
-      - time: "09:00"
-        activity: "出发前往 Uluwatu"
-      - time: "10:00"
-        activity: "☕ Mana Uluwatu 悬崖咖啡——车直达停车场，不用走台阶，抱娃看海，轻松拍照"
-      - time: "11:30"
-        activity: "开车前往 Nusa Dua（顺路风景）"
-      - time: "12:00"
-        activity: "🏖️ Mengiat Beach（Nusa Dua）——海滩边午餐，租2个躺椅（当地 vendor，约 IDR 100-150k）"
-      - time: "12:00–15:00"
-        activity: "孩子玩沙玩水，大人晒太阳 / 休息"
-      - time: "15:00"
-        activity: "下午茶 / 休息"
-      - time: "16:00"
-        activity: "返回 Seminyak"
-    why_not:
-      - reason: "Melasti Beach：悬崖下海滩，需走几百级台阶，推车完全不行"
-      - reason: "Uluwatu 寺庙：台阶多 + 猴子抢东西，3岁孩子不方便"
-      - reason: "Kecak Fire Dance：大量 chanting + 火焰，3岁可能害怕"
-    cafe:
-      name: "Mana Uluwatu"
-      location: "Uluwatu Surf Villas 内，悬崖顶上"
-      parking: "有停车场，车直接开上去"
-      steps: "无！走酒店主入口（boom gate）直达餐厅/泳池层，完全不用下台阶"
-      view: "印度洋悬崖海景，无边泳池，视野开阔"
-      spend: "低消约 IDR 100,000-150,000/人，有餐食和饮料"
-      kids: "适合！可以看海、拍照，小孩喜欢看泳池和大海"
-    beach:
-      name: "Mengiat Beach（Nusa Dua）"
-      location: "Nusa Dua 区，靠近 Inaya Putri Bali 酒店"
-      features: "平坦沙滩（推车友好），海水平静（儿童安全），沙质好"
-      loungers: "当地 vendor 搭桌椅，约 IDR 100,000-150,000/2把椅子 + 遮阳伞（下午价）"
-      shower: "简单冲洗点有，但不如俱乐部干净，用海滩 café 方法更舒适"
-      cafe: "就在沙滩边，可以点餐送到躺椅，午餐推荐这家"
-
-  - id: 6
-    date: "4/30"
-    weekday: "周四"
-    label: "DAY 6"
-    subtitle: "上午海豚互动 + 下午 Villa 休闲 SPA"
-    badges:
-      - text: "🟣 20:00 日语课"
-        style: "#7B2FBE"
-      - text: "🐬 新安排"
-        style: "rgba(255,255,255,0.2)"
-    summary: "上午 Bali Exotic Marine Park 与海豚互动，下午回 Villa 休息按摩，节奏轻松不赶。"
-    schedule:
-      - time: "上午"
-        activity: "Villa 泳池 · 孩子玩水 · 大人整理出门"
-        note: "不赶，慢节奏"
-      - time: "10:00"
-        activity: "GrabCar 出发前往 Bali Exotic Marine Park"
-        note: "车程约 24 分钟"
-      - time: "10:30"
-        activity: "🐬 抵达 · 参加 Explorer Program"
-        note: "浅水区互动，3岁果适合，1名大人陪同入场"
-      - time: "10:30–13:00"
-        activity: "海豚互动体验"
-        note: "约 2.5 小时，含拍照、喂食、浅水接触"
-      - time: "13:00"
-        activity: "GrabCar 返回 Seminyak"
-        note: "车程约 24 分钟，IDR 70,000–120,000"
-      - time: "13:30–14:30"
-        activity: "午餐（Seminyak）"
-        note: "推荐 Milk & Madu / Biku（提前约好，错峰不排队）"
-      - time: "15:00–17:00"
-        activity: "返回 Villa · 孩子午睡 · 大人按摩"
-        note: "Kembar Bali Spa 上门（巷子里，超方便）"
-      - time: "17:00–18:00"
-        activity: "孩子醒后 · Villa 玩水 / 大人休息"
-        note: ""
-      - time: "18:00–20:00"
-        activity: "傍晚 Villa 内休息 or 出门逛 Gang Telaga Waja 精品店"
-        note: "精力够就去，不够就在 villa 泡着"
-      - time: "20:00"
-        activity: "🟣 日语课（Villa 内）"
-        note: ""
-      - time: "21:00 后"
-        activity: "孩子睡后 · 大人出去做 SPA"
-        note: "步行 3 分钟到 Spa Alila（⭐5.0）或 Hot Bamboo（⭐4.9）"
-      - time: "22:00"
-        activity: "返回 Villa · 休息"
-        note: "全天结束"
-    restaurants:
-      - name: "Milk & Madu"
-        address: "Jl. Pantai Berawa"
-        link: "https://milkandmadu.com"
-        description: "亲子友好，brunch 风格，咖啡+轻食，适合带孩子"
-      - name: "Biku"
-        address: "Jl. Petitenget No.888"
-        link: "https://bikubali.com"
-        description: "150年历史爪哇木屋 · 藏式料理+印尼菜 · 高颜值环境，孩子可以跑一跑"
-    dolphin_park:
-      name: "Bali Exotic Marine Park (BEMP)"
-      rating: "Google 4.5（1,176条）/ KKday 4.9 / Trip.com 4.5"
-      address: "Jl. Bali Eksotik No.8, Pedungan, Denpasar Selatan, Bali 80222"
-      phone: "+62 853-3883-3678"
-      website: "https://balidolphinmarinepark.com"
-      hours: "10:30 – 18:00（最后入场 17:00）"
-      duration: "建议 2–3 小时"
-      location_from_seminyak: "约 9.2 公里，车程 24 分钟（经 Jl. Bypass Ngurah Rai）"
-      transport:
-        - type: "🚗 GrabCar（推荐）"
-          cost: "IDR 70,000 – 120,000（约 ¥35–60 / 单程）"
-          note: "4人座，全家一部车刚好"
-        - type: "🏍️ GrabBike"
-          cost: "IDR 15,000 – 30,000"
-          note: "适合单独出行的大人"
-        - type: "🚕 返程 GrabCar"
-          cost: "IDR 70,000 – 120,000"
-          note: "BEMP门口直接叫，和去程价格差不多"
-      programs:
-        - name: "Explorer Program ⭐推荐"
-          price_adult: "IDR 650,000（约 ¥325）"
-          price_child: "IDR 580,000（约 ¥290）"
-          price_family_4: "约 ¥1,200 / 4人"
-          includes: "浅水接触，1张免费照片"
-          suitable: "✅ 最小孩首选，3岁果可玩"
-        - name: "Encounter Program"
-          price_adult: "IDR 1,499,000（约 ¥750）"
-          price_child: "IDR 1,350,000（约 ¥675）"
-          includes: "浅水+较深水接触，1张免费照片"
-          suitable: "适合较大童"
-        - name: "Discovery Program"
-          price_adult: "IDR 1,499,000"
-          includes: "较深水互动，1张免费照片"
-          suitable: "成人/大童"
-        - name: "Rise & Shine（早场）"
-          price_adult: "IDR 350,000（约 ¥175）"
-          includes: "岸上互动，非游泳，早晨场"
-          suitable: "较小童 or 不想下水的家长"
-      booking:
-        - platform: "官网"
-          url: "https://balidolphinmarinepark.com/book-dolphin-encounter-tickets-at-bali-exotic-marine-park/"
-          note: "baliexoticmarinepark@gmail.com / WhatsApp +62 853-3883-3678"
-        - platform: "KKday"
-          url: "https://www.kkday.com/en/product/138734"
-          rating: "4.9/5（45条评价）"
-          price_range: "USD 20–88"
-        - platform: "Trip.com"
-          url: "https://www.trip.com/travel-guide/attraction/bali/bali-exotic-marine-park-104151065/"
-          rating: "4.5/5（104条评价）"
-      kid_friendly_notes:
-        - "3-5岁小孩可能初见海豚时有点怕，建议选 Explorer（浅水+岸上混合，最温和）"
-        - "每位儿童需1名大人陪同入场（陪同票另购）"
-        - "建议提前预约，尤其是上午场（10:30），旺季必约"
-        - "自带泳衣、毛巾、替换衣服；园区有更衣室和淋浴"
-      animal_welfare_note: "BEMP 持有印尼环境与林业部颁发的动物福利许可证，但 Tripadvisor 有用户反映动物福利标准不等于国际最高水平，介意的家长请自行评估"
-    spa_note: "孩子午睡时（15:00-17:00）→ 预约 Kembar Bali Spa 上门；孩子睡后（21:00+）→ 步行 3 分钟去 Spa Alila（⭐5.0）或 Hot Bamboo（⭐4.9 · 1345条评价）"
-
-  - id: 7
-    date: "5/1"
-    weekday: "周五"
-    label: "DAY 7"
-    subtitle: "🏁 出发前夜 · 明天凌晨返程"
-    badges:
-      - text: "出发前夜"
-        style: "rgba(255,255,255,0.2)"
-    summary: "出发前最后一天，打包行李 + 退房 + 早点休息。明天（5月2日）凌晨 05:30 出发，08:40 航班飞广州。"
-    schedule:
-      - time: "上午"
-        activity: "别墅泳池 · 孩子玩水 · 大人休息"
-        note: "最后放松"
-      - time: "11:00"
-        activity: "出门早午餐"
-        note: "Milk & Madu / Biku"
-      - time: "13:00"
-        activity: "返回 Villa · 孩子午睡"
-        note: "大人趁机最后收拾行李"
-      - time: "15:00–18:00"
-        activity: "傍晚可选：Potato Head / 逛精品店"
-        note: "行李可放前台，精力够再去逛一圈"
-      - time: "18:00"
-        activity: "晚餐（提前吃）"
-        note: "早点吃完，21:00 前回到 Villa"
-      - time: "20:00–21:00"
-        activity: "孩子洗漱 · 大人最后确认"
-        note: "确保行李全部打包，护照机票在包内"
-      - time: "21:30"
-        activity: "确认行李 · 洗漱 · 准备睡觉"
-        note: "05:30 出发，22:00 前睡下，保证充足睡眠"
-    notes:
-      - text: "明天（5月2日）凌晨出发！08:40 航班，05:30 从 Seminyak 出发，请今晚确认行李已打包好，22:00 前睡下。"
-        icon: "⚠️"
-
-  - id: 8
-    date: "5/2"
-    weekday: "周六"
-    label: "DAY 8"
-    subtitle: "返程日 · 峇厘岛→广州→北京"
-    badges:
-      - text: "回家"
-        style: "var(--danger)"
-      - text: "⚠️ 日语课已请假"
-        style: "badge-warn"
-    summary: "凌晨出发去机场，经广州中转返回北京。飞行途中日语课已请假 ☑️"
-    schedule:
-      - time: "05:00"
-        activity: "起床 · 出发去 DPS 机场"
-        note: "提前约2.5小时到"
-      - time: "~07:00"
-        activity: "抵达机场，办理值机"
-        note: "DPS Terminal I"
-      - time: "08:40"
-        activity: "CZ8482 起飞 CAN → PKX"
-        note: "峇厘岛 DPS"
-      - time: "13:50"
-        activity: "抵达广州白云 T2"
-        note: "取行李 → 重新办理托运"
-      - time: "16:00"
-        activity: "CZ3115 起飞 CAN → PKX"
-        note: "广州白云 T2"
-      - time: "19:15"
-        activity: "抵达北京大兴 T2"
-        note: "行程结束 🎉"
-    transfer_note: "广州转机：两班航班间隔约 2 小时 10 分钟，同为南方航空，行李需在中转站重新办理托运。"
-    class_note: "🟣 日语课（17:55–20:25）已请假 — 飞行途中不影响。"
-    notes:
-      - text: "DPS 机场相对较小，安检较快，但 08:40 的航班仍建议至少提前 2.5 小时到机场。路上预留堵车时间。"
+    - type: 🚗 GrabCar（推荐）
+      cost: IDR 70,000 – 120,000（约 ¥35–60 / 单程）
+      note: 4人座，全家一部车刚好
+    - type: 🏍️ GrabBike
+      cost: IDR 15,000 – 30,000
+      note: 适合单独出行的大人
+    - type: 🚕 返程 GrabCar
+      cost: IDR 70,000 – 120,000
+      note: BEMP门口直接叫，和去程价格差不多
+    programs:
+    - name: Explorer Program ⭐推荐
+      price_adult: IDR 650,000（约 ¥325）
+      price_child: IDR 580,000（约 ¥290）
+      price_family_4: 约 ¥1,200 / 4人
+      includes: 浅水接触，1张免费照片
+      suitable: ✅ 最小孩首选，3岁果可玩
+    - name: Encounter Program
+      price_adult: IDR 1,499,000（约 ¥750）
+      price_child: IDR 1,350,000（约 ¥675）
+      includes: 浅水+较深水接触，1张免费照片
+      suitable: 适合较大童
+    - name: Discovery Program
+      price_adult: IDR 1,499,000
+      includes: 较深水互动，1张免费照片
+      suitable: 成人/大童
+    - name: Rise & Shine（早场）
+      price_adult: IDR 350,000（约 ¥175）
+      includes: 岸上互动，非游泳，早晨场
+      suitable: 较小童 or 不想下水的家长
+    booking:
+    - platform: 官网
+      url: https://balidolphinmarinepark.com/book-dolphin-encounter-tickets-at-bali-exotic-marine-park/
+      note: baliexoticmarinepark@gmail.com / WhatsApp +62 853-3883-3678
+    - platform: KKday
+      url: https://www.kkday.com/en/product/138734
+      rating: 4.9/5（45条评价）
+      price_range: USD 20–88
+    - platform: Trip.com
+      url: https://www.trip.com/travel-guide/attraction/bali/bali-exotic-marine-park-104151065/
+      rating: 4.5/5（104条评价）
+    kid_friendly_notes:
+    - 3-5岁小孩可能初见海豚时有点怕，建议选 Explorer（浅水+岸上混合，最温和）
+    - 每位儿童需1名大人陪同入场（陪同票另购）
+    - 建议提前预约，尤其是上午场（10:30），旺季必约
+    - 自带泳衣、毛巾、替换衣服；园区有更衣室和淋浴
+    animal_welfare_note: BEMP 持有印尼环境与林业部颁发的动物福利许可证，但 Tripadvisor 有用户反映动物福利标准不等于国际最高水平，介意的家长请自行评估
+  spa_note: 孩子午睡时（15:00-17:00）→ 预约 Kembar Bali Spa 上门；孩子睡后（21:00+）→ 步行 3 分钟去 Spa Alila（⭐5.0）或 Hot Bamboo（⭐4.9 · 1345条评价）
+  attraction_image: https://aquaclawhub.github.io/bali-trip/assets/images/bali-zoo.jpg
+- id: 7
+  date: 5/1
+  weekday: 周五
+  label: DAY 7
+  subtitle: 🏁 出发前夜 · 明天凌晨返程
+  badges:
+  - text: 出发前夜
+    style: rgba(255,255,255,0.2)
+  summary: 出发前最后一天，打包行李 + 退房 + 早点休息。明天（5月2日）凌晨 05:30 出发，08:40 航班飞广州。
+  schedule:
+  - time: 上午
+    activity: 别墅泳池 · 孩子玩水 · 大人休息
+    note: 最后放松
+  - time: '11:00'
+    activity: 出门早午餐
+    note: Milk & Madu / Biku
+  - time: '13:00'
+    activity: 返回 Villa · 孩子午睡
+    note: 大人趁机最后收拾行李
+  - time: 15:00–18:00
+    activity: 傍晚可选：Potato Head / 逛精品店
+    note: 行李可放前台，精力够再去逛一圈
+  - time: '18:00'
+    activity: 晚餐（提前吃）
+    note: 早点吃完，21:00 前回到 Villa
+  - time: 20:00–21:00
+    activity: 孩子洗漱 · 大人最后确认
+    note: 确保行李全部打包，护照机票在包内
+  - time: '21:30'
+    activity: 确认行李 · 洗漱 · 准备睡觉
+    note: 05:30 出发，22:00 前睡下，保证充足睡眠
+  notes:
+  - text: 明天（5月2日）凌晨出发！08:40 航班，05:30 从 Seminyak 出发，请今晚确认行李已打包好，22:00 前睡下。
+    icon: ⚠️
+- id: 8
+  date: 5/2
+  weekday: 周六
+  label: DAY 8
+  subtitle: 返程日 · 峇厘岛→广州→北京
+  badges:
+  - text: 回家
+    style: var(--danger)
+  - text: ⚠️ 日语课已请假
+    style: badge-warn
+  summary: 凌晨出发去机场，经广州中转返回北京。飞行途中日语课已请假 ☑️
+  schedule:
+  - time: 05:00
+    activity: 起床 · 出发去 DPS 机场
+    note: 提前约2.5小时到
+  - time: ~07:00
+    activity: 抵达机场，办理值机
+    note: DPS Terminal I
+  - time: 08:40
+    activity: CZ8482 起飞 CAN → PKX
+    note: 峇厘岛 DPS
+  - time: '13:50'
+    activity: 抵达广州白云 T2
+    note: 取行李 → 重新办理托运
+  - time: '16:00'
+    activity: CZ3115 起飞 CAN → PKX
+    note: 广州白云 T2
+  - time: '19:15'
+    activity: 抵达北京大兴 T2
+    note: 行程结束 🎉
+  transfer_note: 广州转机：两班航班间隔约 2 小时 10 分钟，同为南方航空，行李需在中转站重新办理托运。
+  class_note: 🟣 日语课（17:55–20:25）已请假 — 飞行途中不影响。
+  notes:
+  - text: DPS 机场相对较小，安检较快，但 08:40 的航班仍建议至少提前 2.5 小时到机场。路上预留堵车时间。

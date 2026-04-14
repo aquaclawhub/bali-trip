@@ -501,6 +501,10 @@
         </div>
         {% endif %}
 
+        {% if day.attraction_image %}
+        <img src="{{ day.attraction_image }}" alt="{{ day.subtitle }}" style="width:100%;border-radius:8px;margin-bottom:14px;object-fit:cover;max-height:220px;" onerror="this.style.display='none'">
+        {% endif %}
+
         {% if day.schedule %}
         <div class="table-wrap schedule-table">
           <table>
