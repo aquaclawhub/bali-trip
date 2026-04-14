@@ -61,7 +61,7 @@ days:
     address: Jl. Kartika Plaza, Kuta
     highlights: 海滨Mall，国际品牌，Chagee奶茶（海滩区首家），有露天广场和文化表演区
     suitable: 逛街+看海两不误，傍晚出来正好
-    image: https://aquaclawhub.github.io/bali-trip/assets/images/beachwalk.jpg
+    image: https://aquaclawhub.github.io/bali-trip/assets/images/discovery-mall.jpg
   - name: Beachwalk Shopping Center
     location: Kuta · 海景
     rating: ⭐4.5（评分最高）
@@ -92,7 +92,8 @@ days:
     suitable: 带孩子来这里绝对不会错，有儿童游乐设施可以消耗精力
     image: https://aquaclawhub.github.io/bali-trip/assets/images/trans-studio-mall.jpg
   notes:
-  - text: Villa 第一天可以逛逛附近，找到最近的 7-11/便利店、餐厅、按摩店位置，熟悉环境。如果带娃累了，4个商场里 Trans Studio Mall 最适合孩子。
+  - text: Villa 第一天可以逛逛附近，找到最近的 7-11/便利店、餐厅、按摩店位置，熟悉环境。如果带娃累了，4个商场里 Trans Studio Mall
+      最适合孩子。
     icon: 💡
 - id: 2
   date: 4/26
@@ -170,7 +171,8 @@ days:
   badges:
   - text: 休闲
     style: rgba(255,255,255,0.2)
-  summary: 上午 Sanur 海滩玩沙踏浪 → 海滩 café 午餐冲淡换衣 → 下午 Villa 休息 SPA → 傍晚 Beach Club 看日落。Waterbom 第二天，轻松节奏。
+  summary: 上午 Sanur 海滩玩沙踏浪 → 海滩 café 午餐冲淡换衣 → 下午 Villa 休息 SPA → 傍晚 Beach Club 看日落。Waterbom
+    第二天，轻松节奏。
   schedule:
   - time: 08:00
     activity: 出发前往 Sanur
@@ -473,7 +475,8 @@ days:
     - 建议提前预约，尤其是上午场（10:30），旺季必约
     - 自带泳衣、毛巾、替换衣服；园区有更衣室和淋浴
     animal_welfare_note: BEMP 持有印尼环境与林业部颁发的动物福利许可证，但 Tripadvisor 有用户反映动物福利标准不等于国际最高水平，介意的家长请自行评估
-  spa_note: 孩子午睡时（15:00-17:00）→ 预约 Kembar Bali Spa 上门；孩子睡后（21:00+）→ 步行 3 分钟去 Spa Alila（⭐5.0）或 Hot Bamboo（⭐4.9 · 1345条评价）
+  spa_note: 孩子午睡时（15:00-17:00）→ 预约 Kembar Bali Spa 上门；孩子睡后（21:00+）→ 步行 3 分钟去 Spa Alila（⭐5.0）或
+    Hot Bamboo（⭐4.9 · 1345条评价）
   attraction_image: https://aquaclawhub.github.io/bali-trip/assets/images/bali-zoo.jpg
 - id: 7
   date: 5/1
